@@ -4,7 +4,7 @@ import ThemeSwitcher from '../ThemeSwitcher'
 const Landing = () => {
   return (
     <div>
-      <ThemeSwitcher />
+      Landing
     </div>
   )
 }
