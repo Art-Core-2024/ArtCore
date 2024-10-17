@@ -5,7 +5,7 @@ import UserLogin from './UserLogin'
 
 const Navbar = () => {
     return (
-        <div className='w-full flex items-center justify-between px-10 fixed top-5'>
+        <div className='w-full flex items-center justify-between px-10 fixed top-5 z-50'>
             <NavLogo />
             <div className='flex items-center justify-between w-3/5'>
                 <NavbarMain />
