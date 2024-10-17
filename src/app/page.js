@@ -1,11 +1,11 @@
-import Landing from '@/components/Home/Landing'
+import Landing from '@/components/Landing/Landing'
 import React from 'react'
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Landing />
-    </div>
+    </>
   )
 }
 
