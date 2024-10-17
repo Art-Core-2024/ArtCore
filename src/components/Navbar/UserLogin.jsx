@@ -6,7 +6,7 @@ const UserLogin = () => {
     const user = 1;
 
     return (
-        <div>
+        <>
             {user ? (
                 <div className='text-white font-semibold cursor-pointer border-2 border-green-500 px-6 py-2 flex items-center justify-center gap-3 rounded-full bg-[#4b556381] backdrop-blur-xl shadow-sm shadow-green-400 transition duration-200 ease-in-out hover:scale-105 hover:drop-shadow-4xl drop-shadow-3xl'>
                     <UserCircleIcon className='size-7' />
@@ -17,7 +17,7 @@ const UserLogin = () => {
                     Login/Signup
                 </div>
             )}
-        </div>
+        </>
     )
 }
 
