@@ -3,7 +3,7 @@ import React from 'react'
 
 const LeftSection = () => {
   return (
-    <div className='w-1/2 h-full flex flex-col justify-center items-center gap-12 pt-10 text-white'>
+    <div className='w-1/2 h-full flex flex-col justify-center items-center gap-12 pt-20 text-white'>
       <div className='w-full flex flex-col justify-center items-center gap-6 text-white'>
         <p className='font-carter text-7xl font-bold tracking-wide drop-shadow-text'>ART CORE</p>
         <p className='font-jim text-4xl font-medium text-center tracking-wide'>&quot;Curating Beauty, one Brushstroke at a Time&quot;</p>
