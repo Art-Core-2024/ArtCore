@@ -1,9 +1,16 @@
+'use client'
 import { LockClosedIcon, PaintBrushIcon } from '@heroicons/react/24/solid'
 import React from 'react'
+import { motion } from 'framer-motion'
 
 const LeftSection = () => {
   return (
-    <div className='w-1/2 h-full flex flex-col justify-center items-center gap-12 pt-20 text-white'>
+    <motion.div
+      initial={{ translateX: -100, opacity: 0 }}
+      animate={{ translateX: 0, opacity: 1 }}
+      transition={{ delay: 0.3, duration: 0.35 }}
+      className='w-1/2 h-full flex flex-col justify-center items-center gap-12 pt-20 text-white'
+    >
       <div className='w-full flex flex-col justify-center items-center gap-6 text-white'>
         <p className='font-carter text-7xl font-bold tracking-wide drop-shadow-text'>ART CORE</p>
         <p className='font-jim text-4xl font-medium text-center tracking-wide'>&quot;Curating Beauty, one Brushstroke at a Time&quot;</p>
@@ -18,7 +25,7 @@ const LeftSection = () => {
           Explore Artworks
         </button>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

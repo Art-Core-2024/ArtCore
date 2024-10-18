@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect } from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 const RightSection = () => {
 
@@ -34,7 +35,12 @@ const RightSection = () => {
   })
 
   return (
-    <div className='w-1/2 pt-28 h-full flex items-center justify-center relative text-white overflow-hidden'>
+    <motion.div
+      initial={{ translateX: 100, opacity: 0 }}
+      animate={{ translateX: 0, opacity: 1 }}
+      transition={{ delay: 0.3, duration: 0.35 }}
+      className='w-1/2 pt-28 h-full flex items-center justify-center relative text-white overflow-hidden'
+    >
       <div className='w-1/2 rounded-full p-3 flex items-center justify-center absolute mx-auto my-auto shadow-sm drop-shadow-3xl overflow-hidden'>
         <p
           id='rotating-text-div'
@@ -51,7 +57,7 @@ const RightSection = () => {
         <div className='mx-auto my-auto flex items-center justify-center rounded-full bg-black absolute top-0 left-0 right-0 bottom-0 overflow-hidden -z-10'>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
