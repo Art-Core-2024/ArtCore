@@ -46,6 +46,7 @@ const RightSection = () => {
           width={1500}
           height={1500}
           className='w-[18rem] absolute ml-5 -mb-10 z-10'
+          priority
         />
         <div className='mx-auto my-auto flex items-center justify-center rounded-full bg-black absolute top-0 left-0 right-0 bottom-0 overflow-hidden -z-10'>
         </div>
