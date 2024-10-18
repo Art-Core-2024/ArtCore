@@ -26,7 +26,7 @@ const NavbarMain = ({ theme }) => {
     };
 
     return (
-        <div className={`border-2 border-green-500 shadow-sm shadow-green-400 drop-shadow-3xl w-[70%] py-2 rounded-full bg-[#4b5563b1] backdrop-blur-xl flex items-center justify-around`}>
+        <div className={`border-2 border-green-500 shadow-sm shadow-green-400 drop-shadow-3xl w-[70%] py-2 rounded-full bg-black backdrop-blur-xl flex items-center justify-around`}>
             <HomeIcon
                 className={`size-7 cursor-pointer transition duration-300 ease-in-out ${activeTab === 'home' ? 'bg-white rounded-full text-black p-[0.3rem] border-2 border-green-500 scale-[180%] translate-y-4 cursor-auto' : 'text-white hover:-translate-y-1'}`}
                 onClick={() => handleNavigation('/', 'home')}
