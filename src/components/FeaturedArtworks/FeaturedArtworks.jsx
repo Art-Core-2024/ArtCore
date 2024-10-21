@@ -1,13 +1,15 @@
 'use client';
-import React from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
+import { ArrowRightCircleIcon, ArrowLeftCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
+import Artwork from '../Artwork/Artwork';
 
 const FeaturedArtworks = () => {
+
     return (
-        <div className='w-full h-screen relative text-white overflow-hidden pt-32'>
+        <div className='w-full min-h-screen relative text-white overflow-hidden pt-32'>
             <Image
                 src="/Bg-screen.jpg"
                 alt="Background image"
@@ -34,8 +36,18 @@ const FeaturedArtworks = () => {
                 </div>
                 <hr className='border-none h-[1px] bg-white w-[80%]' />
             </motion.div>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 0.35 }}
+                className='relative w-full h-full overflow-hidden px-20'
+            >
+                <div className='w-full h-full scrollbar-hidden gap-7 flex justify-start items-center'>
+                    <Artwork />
+                </div>
+            </motion.div>
         </div>
     )
 }
 
-export default FeaturedArtworks
+export default FeaturedArtworks;
