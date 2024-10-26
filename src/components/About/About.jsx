@@ -17,7 +17,7 @@ const About = () => {
                 className='scale-y-[-1]'
                 priority
             />
-            <div className='absolute inset-0 bg-[#000000] opacity-60'></div>
+            <div className='absolute inset-0 bg-[#000000] opacity-70'></div>
             <motion.div
                 initial={{ translateX: -100, opacity: 0 }}
                 animate={{ translateX: 0, opacity: 1 }}

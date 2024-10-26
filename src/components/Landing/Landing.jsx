@@ -14,7 +14,7 @@ const Landing = () => {
                 objectPosition='center'
                 priority
             />
-            <div className='absolute inset-0 bg-[#000000] opacity-60'></div>
+            <div className='absolute inset-0 bg-[#000000] opacity-70'></div>
             <div className='relative z-[1] w-full h-full flex items-center justify-between'>
                 <LeftSection />
                 <RightSection />

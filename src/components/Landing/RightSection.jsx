@@ -41,7 +41,7 @@ const RightSection = () => {
       transition={{ delay: 0.3, duration: 0.35 }}
       className='w-1/2 pt-28 h-full flex items-center justify-center relative text-white overflow-hidden'
     >
-      <div className='w-1/2 rounded-full p-3 flex items-center justify-center absolute mx-auto my-auto shadow-sm drop-shadow-3xl overflow-hidden'>
+      <div className='w-1/2 rounded-full p-3 flex items-center justify-center absolute mx-auto my-auto shadow-sm drop-shadow-artist overflow-hidden'>
         <p
           id='rotating-text-div'
           className='relative w-[300px] h-[300px] animate-rotate rounded-full tracking-tight'

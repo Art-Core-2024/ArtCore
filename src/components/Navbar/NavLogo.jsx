@@ -8,7 +8,7 @@ const NavLogo = () => {
             alt="Logo"
             width={500}
             height={500}
-            className='size-20 border-2 border-green-500 shadow-sm shadow-green-400 drop-shadow-3xl transition duration-200 ease-in-out cursor-pointer hover:scale-105 hover:drop-shadow-4xl rounded-full bg-black backdrop-blur-xl'
+            className='size-20 border-2 border-green-500 shadow-md shadow-green-400 drop-shadow-2xl transition duration-200 ease-in-out cursor-pointer hover:scale-105 hover:shadow-lg rounded-full bg-black backdrop-blur-xl'
         />
     )
 }

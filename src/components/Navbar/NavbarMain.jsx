@@ -36,7 +36,7 @@ const NavbarMain = ({ theme }) => {
     );
 
     return (
-        <div className={`border-2 border-green-500 shadow-sm shadow-green-400 drop-shadow-3xl w-[70%] py-2 rounded-full bg-black backdrop-blur-xl flex items-center justify-around`}>
+        <div className={`border-2 border-green-500 shadow-md shadow-green-400 drop-shadow-2xl w-[70%] py-2 rounded-full bg-black flex items-center justify-around`}>
             <NavItem icon={HomeIcon} tabName="home" path="/" />
             <NavItem icon={BookOpenIcon} tabName="about" path="/about" />
             <NavItem icon={PaintBrushIcon} tabName="artworks" path="/artworks" />

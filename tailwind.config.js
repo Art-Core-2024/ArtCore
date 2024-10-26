@@ -15,9 +15,10 @@ module.exports = {
         foreground: "var(--foreground)",
       },
       dropShadow: {
-        '3xl': '0 0 14px #4ade80',
+        '3xl': '0 0 5px #4ade80',
         '4xl': '0 0 20px #4ade80',
         '5xl': '0 10px 50px #4ade80',
+        'artist': '0 0px 14px #4ade80',
         'text': '3px 12px 4px rgba(0, 0, 0, 0.40)'
       },
       keyframes: {

@@ -16,7 +16,7 @@ const ArtistImage = () => {
             alt="Arundhati Bera"
             width={1500}
             height={1500}
-            className='w-72 border-2 shadow-sm border-green-500 drop-shadow-3xl rounded-md shadow-green-400 p-4 bg-[#000000b0] backdrop-blur-lg'
+            className='w-72 border-2 shadow-sm border-green-500 drop-shadow-3xl rounded-md shadow-green-400 p-4 bg-black backdrop-blur-lg'
         />
     </motion.div>
   )
