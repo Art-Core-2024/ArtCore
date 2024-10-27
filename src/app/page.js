@@ -1,6 +1,7 @@
 import About from '@/components/About/About'
 import FeaturedArtworks from '@/components/FeaturedArtworks/FeaturedArtworks'
 import Landing from '@/components/Landing/Landing'
+import TopMovingArrow from '@/components/Others/TopMovingArrow'
 import React from 'react'
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
       <Landing />
       <About />
       <FeaturedArtworks />
+      <TopMovingArrow />
     </div>
   )
 }
