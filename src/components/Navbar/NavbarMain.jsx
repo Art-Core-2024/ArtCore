@@ -3,7 +3,7 @@ import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { BookOpenIcon, HomeIcon, PaintBrushIcon, PhoneIcon } from '@heroicons/react/24/solid';
 import { usePathname, useRouter } from 'next/navigation';
 
-const NavbarMain = ({ theme }) => {
+const NavbarMain = () => {
     const router = useRouter();
     const pathname = usePathname();
     const [activeTab, setActiveTab] = useState('');
@@ -21,7 +21,10 @@ const NavbarMain = ({ theme }) => {
     }), []);
 
     useEffect(() => {
-        setActiveTab(tabMapping[pathname] || '');
+        const activeTab = Object.keys(tabMapping)
+            .sort((a, b) => b.length - a.length)  // Sort paths by length in descending order
+            .find(path => pathname.startsWith(path)) || '';
+        setActiveTab(tabMapping[activeTab]);
     }, [pathname, tabMapping]);
 
     const NavItem = ({ icon: Icon, tabName, path }) => (
@@ -36,7 +39,7 @@ const NavbarMain = ({ theme }) => {
     );
 
     return (
-        <div className={`border-2 border-green-500 shadow-md shadow-green-400 drop-shadow-2xl w-[70%] py-2 rounded-full bg-black flex items-center justify-around`}>
+        <div className="border-2 border-green-500 shadow-md shadow-green-400 drop-shadow-2xl w-[70%] py-2 rounded-full bg-black flex items-center justify-around">
             <NavItem icon={HomeIcon} tabName="home" path="/" />
             <NavItem icon={BookOpenIcon} tabName="about" path="/about" />
             <NavItem icon={PaintBrushIcon} tabName="artworks" path="/artworks" />
