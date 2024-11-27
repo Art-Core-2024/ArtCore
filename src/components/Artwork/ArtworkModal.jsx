@@ -25,7 +25,7 @@ const ArtworkModal = ({ artwork, closeModal }) => {
     })
 
     return (
-        <div className='fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 transition ease-in-out duration-200'>
+        <div className='fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 transition ease-in-out duration-200'>
             <div ref={ref} className='relative transition ease-in-out duration-200 bg-black text-white border-2 border-green-500 shadow-md drop-shadow-3xl shadow-green-400 rounded-lg h-[25rem] w-[60%] mt-20 flex items-center justify-center'>
                 <XMarkIcon className='absolute top-4 right-4 w-8 h-8 cursor-pointer text-green-500 font-bold transition ease-in-out duration-200 hover:scale-110' onClick={closeModal} />
                 <div className='w-full h-full p-5'>

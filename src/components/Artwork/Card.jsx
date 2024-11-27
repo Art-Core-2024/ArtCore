@@ -4,7 +4,7 @@ import React from 'react'
 
 const Card = ({ img, alt, title, type, price }) => {
     return (
-        <div className='text-white border-2 border-green-400 rounded-md flex items-center justify-center flex-col w-[18rem] h-[27.2rem] transition duration-200 ease-in-out cursor-pointer hover:scale-105'>
+        <div className='text-white border-2 border-green-400 rounded-md flex items-center justify-center flex-col w-[16rem] h-[24.2rem] pb-2 transition duration-200 ease-in-out cursor-pointer hover:scale-105'>
             <div className='w-full h-[70%] p-2 bg-black rounded-md'>
                 <Image
                     src={img}
