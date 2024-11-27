@@ -1,8 +1,19 @@
+import Image from 'next/image'
 import React from 'react'
 
 const ReturnAndRefund = () => {
     return (
         <div className='w-full h-screen overflow-hidden flex items-center justify-center'>
+            <Image
+                src="/Bg-screen.jpg"
+                alt="Background image"
+                layout="fill"
+                objectFit="cover"
+                objectPosition='center'
+                className='scale-y-[-1]'
+                priority
+            />
+            <div className='absolute inset-0 bg-[#000000] opacity-60'></div>
             <div className='w-[90%] h-[75%] mt-24 rounded-md py-5 px-7 text-white bg-black border-2 border-green-500 shadow-md drop-shadow-3xl shadow-green-400 overflow-hidden overflow-y-auto'>
                 <div className='flex items-center w-full justify-between'>
                     <h1 className='text-3xl font-bold text-green-500'>Return and Refund Policy</h1>
