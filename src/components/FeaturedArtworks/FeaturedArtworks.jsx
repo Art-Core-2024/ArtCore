@@ -2,7 +2,7 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ArrowRightCircleIcon, ArrowLeftCircleIcon } from '@heroicons/react/24/solid';
+import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import Artwork from '../Artwork/Artwork';
 
