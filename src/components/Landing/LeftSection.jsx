@@ -10,15 +10,26 @@ const LeftSection = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
+    // Firebase Auth State Listener
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        setUser({
+          displayName: firebaseUser.displayName,
+          photoURL: firebaseUser.photoURL,
+          email: firebaseUser.email,
+        });
       } else {
-        setUser(null);
+        // Check local storage for local login session
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+          setUser(JSON.parse(storedUser));
+        } else {
+          setUser(null);
+        }
       }
     });
 
-    // Clean up subscription on unmount
+    // Cleanup subscription on component unmount
     return () => unsubscribe();
   }, []);
 
@@ -46,7 +57,7 @@ const LeftSection = () => {
             <div
               className='text-green-500 font-semibold border-2 border-green-500 px-5 py-2 flex items-center justify-center text-lg gap-3 rounded-full bg-black shadow-md shadow-green-400 transition duration-200 ease-in-out drop-shadow-2xl'
             >
-              <span className='text-white'>Welcome,</span> {user.displayName}
+              <span className='text-white'>Welcome,</span> {user.name}
             </div>
           </>
         ) : (

@@ -85,12 +85,12 @@ const UserLogin = () => {
           >
             <Image
               src={user.photoURL || '/user.png'} // Fallback avatar if none exists
-              alt={user.displayName || 'User'}
+              alt={user.name || 'User'}
               className="size-8 rounded-full"
               width={50}
               height={50}
             />
-            {user.displayName || 'User'}
+            {user.name || 'User'}
           </div>
           {dropdownOpen && (
             <div
