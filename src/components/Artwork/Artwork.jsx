@@ -1,30 +1,33 @@
-'use client';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Card from './Card';
-import ArtworksList from './ArtworksList';
 import ArtworkModal from './ArtworkModal';
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
 const Artwork = () => {
+    const [artworks, setArtworks] = useState([]);
     const [selectedArtwork, setSelectedArtwork] = useState(null);
     const [isModalOpen, setModalOpen] = useState(false);
     const scrollRef = useRef(null);
 
+    useEffect(() => {
+        const fetchArtworks = async () => {
+            const response = await fetch('/api/artworks');
+            const data = await response.json();
+            const featuredArtworks = data.filter((artwork) => artwork.featured);
+            setArtworks(featuredArtworks);
+        };
+        fetchArtworks();
+    }, []);
+
     const scrollLeft = () => {
         if (scrollRef.current) {
-            scrollRef.current.scrollBy({
-                left: -300,
-                behavior: 'smooth',
-            });
+            scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
         }
     };
 
     const scrollRight = () => {
         if (scrollRef.current) {
-            scrollRef.current.scrollBy({
-                left: 300,
-                behavior: 'smooth',
-            });
+            scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
         }
     };
 
@@ -53,14 +56,14 @@ const Artwork = () => {
             </div>
 
             <div ref={scrollRef} className='overflow-hidden overflow-x-auto scrollbar-hidden flex items-center justify-start gap-8 py-6 px-6'>
-                {ArtworksList.map((artwork, index) => (
-                    <div key={index} onClick={() => handleCardClick(artwork)}>
+                {artworks.map((artwork) => (
+                    <div key={artwork._id} onClick={() => handleCardClick(artwork)}>
                         <Card
-                            img={artwork.img}
-                            alt={artwork.alt}
-                            title={artwork.title}
+                            img={artwork.image}
+                            alt={artwork.name}
+                            title={artwork.name}
                             type={artwork.type}
-                            price={artwork.price}
+                            price={`₹${artwork.price}`}
                         />
                     </div>
                 ))}

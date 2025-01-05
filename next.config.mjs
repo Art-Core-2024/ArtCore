@@ -2,10 +2,11 @@
 const nextConfig = {
     images: {
         remotePatterns: [
-            { hostname: 'lh3.googleusercontent.com' }, // Google profile pictures
-            { hostname: 'platform-lookaside.fbsbx.com' }, // Facebook profile pictures
-            { hostname: 'pbs.twimg.com' }, // Twitter profile pictures
-            { hostname: 'abs.twimg.com' } // Twitter assets (e.g., icons)
+            { hostname: 'lh3.googleusercontent.com' },
+            { hostname: 'platform-lookaside.fbsbx.com' },
+            { hostname: 'pbs.twimg.com' },
+            { hostname: 'abs.twimg.com' },
+            { hostname: 'drive.google.com' } 
         ],
     },
 };

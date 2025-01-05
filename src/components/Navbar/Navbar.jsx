@@ -1,12 +1,15 @@
-'use client'
-import React, { useState, useEffect } from 'react'
-import NavLogo from './NavLogo'
-import NavbarMain from './NavbarMain'
-import UserLogin from './UserLogin'
-import { motion } from 'framer-motion'
+'use client';
+import React, { useState, useEffect } from 'react';
+import NavLogo from './NavLogo';
+import NavbarMain from './NavbarMain';
+import UserLogin from './UserLogin';
+import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
-    const [scrolled, setScrolled] = useState(false)
+    const [scrolled, setScrolled] = useState(false);
+    const pathname = usePathname();
+    const shouldHideNavbar = pathname === '/admin';
 
     useEffect(() => {
         const handleScroll = () => {
@@ -21,7 +24,11 @@ const Navbar = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll)
         }
-    }, [])
+    }, []);
+
+    if (shouldHideNavbar) {
+        return null;
+    }
 
     return (
         <motion.div

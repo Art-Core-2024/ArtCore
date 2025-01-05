@@ -30,8 +30,8 @@ const ArtworkModal = ({ artwork, closeModal }) => {
                 <XMarkIcon className='absolute top-4 right-4 w-8 h-8 cursor-pointer text-green-500 font-bold transition ease-in-out duration-200 hover:scale-110' onClick={closeModal} />
                 <div className='w-full h-full p-5'>
                     <Image
-                        src={artwork.img}
-                        alt={artwork.title}
+                        src={artwork.image}
+                        alt={artwork.name}
                         width={2000}
                         height={2000}
                         className='w-full h-full object-cover rounded-md'
@@ -39,13 +39,13 @@ const ArtworkModal = ({ artwork, closeModal }) => {
                 </div>
                 <div className='w-full h-full p-5 pt-10 flex items-center flex-col justify-between'>
                     <div className='w-full h-full'>
-                        <h2 className='text-2xl font-extrabold mb-4 text-green-500'>{artwork.title}</h2>
+                        <h2 className='text-2xl font-extrabold mb-4 text-green-500'>{artwork.name}</h2>
                         <div className='flex items-center justify-between pr-10 font-bold text-gray-500'>
                             <p >{artwork.type}</p>
                             <p>{artwork.price}</p>
                         </div>
                     </div>
-                    <div className='w-full h-[32rem] mb-5 overflow-hidden overflow-y-auto flex items-start justify-center pr-3'>
+                    <div className='w-full h-[32rem] mb-5 overflow-hidden overflow-y-auto flex items-start justify-start pr-3'>
                         {artwork.description}
                     </div>
                     <div className='w-full h-full flex flex-col items-center justify-center gap-3'>
