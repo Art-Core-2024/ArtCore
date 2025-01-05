@@ -9,16 +9,7 @@ import Artwork from '@/components/Artwork/Artwork';
 const FeaturedArtworks = () => {
 
     return (
-        <div className='w-full min-h-screen relative text-white overflow-hidden pt-32'>
-            <Image
-                src="/Bg-screen.jpg"
-                alt="Background image"
-                layout="fill"
-                objectFit="cover"
-                objectPosition='center'
-                priority
-            />
-            <div className='absolute inset-0 bg-[#000000] opacity-70'></div>
+        <div className='w-full min-h-screen text-white overflow-hidden pt-32'>
             <motion.div
                 initial={{ translateX: -100, opacity: 0 }}
                 animate={{ translateX: 0, opacity: 1 }}

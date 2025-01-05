@@ -35,16 +35,6 @@ const About = () => {
 
     return (
         <div ref={aboutRef} className='w-full h-screen relative text-white overflow-hidden pt-32'>
-            <Image
-                src="/Bg-screen.jpg"
-                alt="Background image"
-                layout="fill"
-                objectFit="cover"
-                objectPosition='center'
-                className='scale-y-[-1]'
-                priority
-            />
-            <div className='absolute inset-0 bg-[#000000] opacity-70'></div>
             {isVisible && (
                 <>
                     <motion.div
