@@ -2,7 +2,7 @@
 import React, { useRef, useState } from 'react';
 import Card from './Card';
 import ArtworksList from './ArtworksList';
-import ArtworkModal from './ArtworkModal'
+import ArtworkModal from './ArtworkModal';
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
 const Artwork = () => {

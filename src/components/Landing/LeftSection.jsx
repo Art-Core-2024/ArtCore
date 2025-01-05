@@ -1,9 +1,34 @@
-'use client'
-import { LockClosedIcon, PaintBrushIcon } from '@heroicons/react/24/solid'
-import React from 'react'
-import { motion } from 'framer-motion'
+'use client';
+import { LockClosedIcon, PaintBrushIcon } from '@heroicons/react/24/solid';
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { auth } from '@/firebase/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const LeftSection = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
+
+    // Clean up subscription on unmount
+    return () => unsubscribe();
+  }, []);
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+
   return (
     <motion.div
       initial={{ translateX: -100, opacity: 0 }}
@@ -16,10 +41,20 @@ const LeftSection = () => {
         <p className='font-jim text-4xl font-medium text-center tracking-wide'>&quot;Curating Beauty, one Brushstroke at a Time&quot;</p>
       </div>
       <div className='w-full flex items-center justify-center gap-16'>
-        <button className='flex items-center justify-center gap-3 border-2 border-green-500 bg-black drop-shadow-3xl shadow-green-400 rounded-full px-7 py-3 font-bold transition duration-200 ease-in-out hover:scale-105 hover:drop-shadow-4xl'>
-          <LockClosedIcon className='h-6 w-6' />
-          Login/Signup
-        </button>
+        {user ? (
+          <>
+            <div
+              className='text-green-500 font-semibold border-2 border-green-500 px-5 py-2 flex items-center justify-center text-lg gap-3 rounded-full bg-black shadow-md shadow-green-400 transition duration-200 ease-in-out drop-shadow-2xl'
+            >
+              <span className='text-white'>Welcome,</span> {user.displayName}
+            </div>
+          </>
+        ) : (
+          <Link href='/auth' className='flex items-center justify-center gap-3 border-2 border-green-500 bg-black drop-shadow-3xl shadow-green-400 rounded-full px-7 py-3 font-bold transition duration-200 ease-in-out hover:scale-105 hover:drop-shadow-4xl'>
+            <LockClosedIcon className='h-6 w-6' />
+            Login/Signup
+          </Link>
+        )}
         <button className='flex items-center justify-center gap-3 border-2 border-green-500 bg-black drop-shadow-3xl shadow-green-400 rounded-full px-7 py-3 font-bold transition duration-200 ease-in-out hover:scale-105 hover:drop-shadow-4xl'>
           <PaintBrushIcon className='h-6 w-6' />
           Explore Artworks

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
-import Artwork from '../Artwork/Artwork';
+import Artwork from '@/components/Artwork/Artwork';
 
 const FeaturedArtworks = () => {
 
