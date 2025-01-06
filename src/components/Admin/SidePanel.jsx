@@ -39,7 +39,7 @@ const SidePanel = ({ activePanel, setActivePanel }) => {
                         activePanel === 'users' ? 'bg-neutral-500' : ''
                     }`}
                 >
-                    Manage Users
+                    View Users
                 </div>
             </div>
             <button className='w-full py-2 border-2 border-red-500 transition duration-200 rounded-md hover:bg-red-500 font-bold'>

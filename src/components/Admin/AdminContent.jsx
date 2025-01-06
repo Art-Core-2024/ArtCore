@@ -2,7 +2,7 @@ import React from 'react';
 import ManageArtworks from './Manage/ManageArtworks';
 import ManageAdmins from './Manage/ManageAdmins';
 import ManageOrders from './Manage/ManageOrders';
-import ManageUsers from './Manage/ManageUsers';
+import ViewUsers from './Manage/ViewUsers';
 
 const AdminContent = ({ activePanel }) => {
     // Render content based on the active panel
@@ -15,7 +15,7 @@ const AdminContent = ({ activePanel }) => {
             case 'orders':
                 return <ManageOrders />;
             case 'users':
-                return <ManageUsers />;
+                return <ViewUsers />;
             default:
                 return '';
         }
