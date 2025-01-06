@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation';
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
-    const shouldHideNavbar = pathname === '/admin';
+    const shouldHideNavbar = pathname === '/admin' || pathname === '/register-admin';
 
     useEffect(() => {
         const handleScroll = () => {

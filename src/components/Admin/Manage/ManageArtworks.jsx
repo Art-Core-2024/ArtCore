@@ -58,7 +58,7 @@ const ManageArtworks = () => {
                 <div className='flex items-center justify-between w-full pb-5'>
                     <p className='text-2xl font-bold'>Manage Artworks</p>
                     <button
-                        className='bg-black border-2 border-green-500 rounded-full px-3 py-1 flex items-center justify-center gap-4'
+                        className='bg-black border-2 border-green-500 rounded-full px-3 pr-5 py-1 flex items-center justify-center gap-4'
                         onClick={() => openSidebar()}
                     >
                         <PlusCircleIcon className='size-8 text-green-500' />
