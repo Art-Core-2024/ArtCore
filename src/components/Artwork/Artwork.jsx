@@ -11,10 +11,21 @@ const Artwork = () => {
 
     useEffect(() => {
         const fetchArtworks = async () => {
-            const response = await fetch('/api/artworks');
-            const data = await response.json();
-            const featuredArtworks = data.filter((artwork) => artwork.featured);
-            setArtworks(featuredArtworks);
+            try {
+                const response = await fetch('/api/artworks');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                if (Array.isArray(data)) {
+                    const featuredArtworks = data.filter((artwork) => artwork.featured);
+                    setArtworks(featuredArtworks);
+                } else {
+                    console.error('Data is not an array:', data);
+                }
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
         };
         fetchArtworks();
     }, []);

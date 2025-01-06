@@ -58,7 +58,7 @@ const ArtworksPage = () => {
             transition={{ delay: 1, duration: 0.35 }}
             className='z-[1] flex flex-col items-start justify-center italic gap-3 w-full px-12'
         >
-            <div className='w-full sticky top-0 pt-28 z-20 bg-black/90 pb-5'>
+            <div className='w-full pt-[6.4rem] z-20 pb-5'>
                 <div className='flex items-center justify-between w-full'>
                     <p className='font-carter tracking-wider text-4xl drop-shadow-text'>
                         MY ARTWORKS
@@ -67,7 +67,7 @@ const ArtworksPage = () => {
                 </div>
                 <hr className='border-none h-[1px] bg-white w-full' />
             </div>
-            <div className='w-full flex gap-6 flex-wrap items-center justify-between px-5 pb-5'>
+            <div className='w-full h-[22rem] overflow-hidden overflow-y-auto flex gap-6 flex-wrap items-center justify-between px-5 pb-5'>
                 {filteredArtworks.map((artwork) => (
                     <Card
                         key={artwork._id}

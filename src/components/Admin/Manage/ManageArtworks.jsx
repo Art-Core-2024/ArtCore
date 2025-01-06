@@ -54,7 +54,7 @@ const ManageArtworks = () => {
 
     return (
         <div className='w-full h-full overflow-hidden'>
-            <div className='flex items-center justify-center flex-col w-full sticky top-0 z-40 bg-black'>
+            <div className='flex items-center justify-center flex-col w-full'>
                 <div className='flex items-center justify-between w-full pb-5'>
                     <p className='text-2xl font-bold'>Manage Artworks</p>
                     <button
@@ -67,7 +67,7 @@ const ManageArtworks = () => {
                 </div>
                 <hr className='w-full h-[1px] border-none bg-white mb-5' />
             </div>
-            <div className='w-full h-full pb-28 flex gap-6 flex-wrap items-center justify-center pt-5 px-3 overflow-hidden overflow-y-auto'>
+            <div className='w-full h-[25.5rem] pb-4 flex gap-6 flex-wrap items-center justify-center pt-7 px-3 overflow-hidden overflow-y-auto'>
                 {artworks.map((artwork) => (
                     <Card
                         key={artwork._id}
