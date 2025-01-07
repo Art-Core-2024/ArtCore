@@ -16,13 +16,13 @@ const NavbarMain = () => {
     const tabMapping = useMemo(() => ({
         '/': 'home',
         '/artworks': 'artworks',
-        '/about': 'about',
+        '/policies': 'policies',
         '/contact': 'contact',
     }), []);
 
     useEffect(() => {
         const activeTab = Object.keys(tabMapping)
-            .sort((a, b) => b.length - a.length)  // Sort paths by length in descending order
+            .sort((a, b) => b.length - a.length)
             .find(path => pathname.startsWith(path)) || '';
         setActiveTab(tabMapping[activeTab]);
     }, [pathname, tabMapping]);
@@ -41,7 +41,7 @@ const NavbarMain = () => {
     return (
         <div className="border-2 border-green-500 shadow-md shadow-green-400 drop-shadow-2xl w-[70%] py-2 rounded-full bg-black flex items-center justify-around">
             <NavItem icon={HomeIcon} tabName="home" path="/" />
-            <NavItem icon={BookOpenIcon} tabName="about" path="/about" />
+            <NavItem icon={BookOpenIcon} tabName="policies" path="/policies" />
             <NavItem icon={PaintBrushIcon} tabName="artworks" path="/artworks" />
             <NavItem icon={PhoneIcon} tabName="contact" path="/contact" />
         </div>
