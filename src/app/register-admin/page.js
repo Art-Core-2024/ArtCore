@@ -1,11 +1,11 @@
 'use client';
+import React, { Suspense, useState } from 'react';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
-import React, { useState } from 'react';
 
-export const dynamic = 'force-dynamic'; // Ensure dynamic rendering to avoid prerender errors
+export const dynamic = 'force-dynamic';
 
-const RegisterAdmin = () => {
+const RegisterAdminComponent = () => {
     const searchParams = useSearchParams();
     const email = searchParams.get('email');
     const router = useRouter();
@@ -31,7 +31,7 @@ const RegisterAdmin = () => {
         const response = await fetch('/api/admins/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ...formData, email }), // Include the email
+            body: JSON.stringify({ ...formData, email }),
         });
 
         const data = await response.json();
@@ -123,6 +123,14 @@ const RegisterAdmin = () => {
                 </button>
             </form>
         </div>
+    );
+};
+
+const RegisterAdmin = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <RegisterAdminComponent />
+        </Suspense>
     );
 };
 

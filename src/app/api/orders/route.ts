@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/dbConnect';
 import Order from '@/models/orders';
-import User from '@/models/user';
 
 export async function GET() {
     await dbConnect();
