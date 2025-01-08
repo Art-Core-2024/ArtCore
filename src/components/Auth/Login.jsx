@@ -10,12 +10,13 @@ import {
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const [showPassword, setShowPassword] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedRole, setSelectedRole] = useState('Select Your Role');
@@ -84,11 +85,14 @@ const Login = () => {
       toast.success('Login successful!', { position: 'top-center' });
 
       if (user.role === 'user') {
-        router.push('/');
+        await router.push('/');
       } else if (user.role === 'admin' || user.role === 'super-admin') {
         router.push('/admin');
       } else {
         throw new Error('Invalid role');
+      }
+      if (pathname == '/') {
+        window.location.reload();
       }
     } catch (error) {
       toast.error(
@@ -118,9 +122,8 @@ const Login = () => {
                   <NumberedListIcon className="text-white mr-3 size-7 p-1" />
                   <span>{selectedRole}</span>
                   <ChevronDownIcon
-                    className={`text-white size-7 p-1 ml-auto transition duration-100 ease-in-out ${
-                      dropdownOpen ? '-rotate-180' : ''
-                    }`}
+                    className={`text-white size-7 p-1 ml-auto transition duration-100 ease-in-out ${dropdownOpen ? '-rotate-180' : ''
+                      }`}
                   />
                 </button>
                 {dropdownOpen && (

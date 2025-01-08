@@ -62,12 +62,14 @@ const UserLogin = () => {
         // If logged in via Firebase (social media or email/password)
         await signOut(auth);
         console.log('Firebase user signed out');
+        window.location.reload();
       }
 
       // Clear local session if present
       localStorage.removeItem('user');
       setUser(null);
       setDropdownOpen(false);
+      window.location.reload();
 
       console.log('User successfully signed out');
     } catch (error) {
@@ -89,6 +91,7 @@ const UserLogin = () => {
               className="size-8 rounded-full"
               width={50}
               height={50}
+              priority
             />
             {user.name || 'User'}
           </div>
@@ -99,9 +102,6 @@ const UserLogin = () => {
             >
               <Link href="/profile">
                 <p className="block px-4 py-2 text-sm hover:bg-green-500 hover:text-black">Profile</p>
-              </Link>
-              <Link href="/settings">
-                <p className="block px-4 py-2 text-sm hover:bg-green-500 hover:text-black">Settings</p>
               </Link>
               <button
                 onClick={handleLogout}

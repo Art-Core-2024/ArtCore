@@ -28,6 +28,10 @@ const UserSchema = new mongoose.Schema({
     enum: ['user', 'admin', 'super-admin'],
     default: 'user',
     required: true
+  },
+  address: {
+    type: String, // New field
+    required: false, // Optional field
   }
 });
 
