@@ -6,8 +6,11 @@ const nextConfig = {
             { hostname: 'platform-lookaside.fbsbx.com' },
             { hostname: 'pbs.twimg.com' },
             { hostname: 'abs.twimg.com' },
-            { hostname: 'drive.google.com' } 
+            { hostname: 'drive.google.com' }
         ],
+    },
+    experimental: {
+        outputFileTracingIgnores: ['**/api/**'],
     },
 };
 
