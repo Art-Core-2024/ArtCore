@@ -4,6 +4,8 @@ import UserSchema from '@/models/user';
 import bcrypt from 'bcrypt';
 import { userMiddleware } from '@/middlewares/userMiddleware';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     // Cache the body once

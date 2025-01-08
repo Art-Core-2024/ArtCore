@@ -3,6 +3,8 @@ import dbConnect from '@/lib/dbConnect';
 import Admin from '@/models/admin';
 import PendingInvite from '@/models/pendingInvite';
 
+export const dynamic = 'force-dynamic';
+
 // Fetch active admins and pending invites
 export async function GET() {
     try {

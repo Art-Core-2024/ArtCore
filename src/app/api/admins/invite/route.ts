@@ -3,6 +3,8 @@ import nodemailer from 'nodemailer';
 import dbConnect from '@/lib/dbConnect';
 import PendingInvite from '@/models/pendingInvite';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
     try {
         const { email } = await req.json();

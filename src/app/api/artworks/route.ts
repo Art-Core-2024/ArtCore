@@ -10,6 +10,8 @@ async function ensureDbConnection() {
 
 ensureDbConnection();
 
+export const dynamic = 'force-dynamic';
+
 /**
  * Handle GET request: Fetch all artworks.
  */

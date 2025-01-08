@@ -2,6 +2,8 @@ import { NextResponse, NextRequest } from 'next/server';
 import dbConnect from '@/lib/dbConnect';
 import PendingInvite from '@/models/pendingInvite';
 
+export const dynamic = 'force-dynamic';
+
 export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
     try {
         const { id } = params; // Extract ID from the dynamic route

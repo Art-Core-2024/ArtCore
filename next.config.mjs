@@ -10,7 +10,7 @@ const nextConfig = {
         ],
     },
     experimental: {
-        outputFileTracingIgnores: ['**/api/**'],
+        outputFileTracingExcludes: { '*': ['**/api/**'] },
     },
 };
 

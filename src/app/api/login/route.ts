@@ -5,6 +5,8 @@ import dbConnect from '@/lib/dbConnect';
 import User from '@/models/user';
 import Admin from '@/models/admin';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
     try {
         const { email, password, role } = await req.json();

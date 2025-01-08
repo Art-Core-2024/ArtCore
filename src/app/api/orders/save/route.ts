@@ -40,6 +40,8 @@ async function sendOrderEmail(userEmail: string, adminEmail: string, orderDetail
     await transporter.sendMail(mailOptions);
 }
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: Request) {
     const { paymentId, address, artworkId, quantity, email, status, amount } = await req.json();
 
