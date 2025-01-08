@@ -1,4 +1,4 @@
-import { PencilIcon, ShoppingCartIcon } from '@heroicons/react/24/solid';
+import { CurrencyRupeeIcon, PencilIcon, ShoppingCartIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import React from 'react';
 
@@ -40,8 +40,8 @@ const Card = ({ img, alt, title, type, price, isAdmin, onEdit, onClick }) => {
                     </div>
                 </div>
                 <button className='flex items-center justify-center gap-3 border-2 border-green-500 bg-black rounded-md py-2 font-bold transition duration-300 ease-in-out hover:bg-green-900'>
-                    <ShoppingCartIcon className='w-6 h-6' />
-                    Add to Cart
+                    <CurrencyRupeeIcon className='w-6 h-6' />
+                    Buy Now
                 </button>
             </div>
         </div>
