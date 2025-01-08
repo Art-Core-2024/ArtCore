@@ -2,9 +2,6 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/dbConnect';
 import Admin from '@/models/admin';
 
-export const dynamic = 'force-dynamic';
-
-
 // Delete an admin by ID
 export async function DELETE(req: Request, { params }: { params: { id: string } }) {
     try {

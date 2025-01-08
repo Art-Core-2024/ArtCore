@@ -6,8 +6,6 @@ import { deleteFileFromDrive } from '@/utils/googleDrive';
 // Ensure database connection
 dbConnect();
 
-export const dynamic = 'force-dynamic';
-
 /**
  * Handle PUT request: Update artwork details by ID.
  */

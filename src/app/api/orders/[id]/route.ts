@@ -2,8 +2,6 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/dbConnect';
 import Order from '@/models/orders';
 
-export const dynamic = 'force-dynamic';
-
 export async function PUT(req: Request, { params }: { params: { id: string } }) {
     const { status } = await req.json();
 

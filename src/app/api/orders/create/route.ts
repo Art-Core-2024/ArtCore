@@ -6,8 +6,6 @@ const razorpay = new Razorpay({
     key_secret: process.env.NEXT_PUBLIC_RAZORPAY_KEY_SECRET!,
 });
 
-export const dynamic = 'force-dynamic';
-
 export async function POST(req: Request) {
     try {
         const { artworkId, quantity, email, address, amount } = await req.json();

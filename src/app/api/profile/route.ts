@@ -5,8 +5,6 @@ import User from '@/models/user';
 // Connect to the database before handling any requests
 dbConnect();
 
-export const dynamic = 'force-dynamic';
-
 /**
  * Handle GET requests to fetch user details.
  */
