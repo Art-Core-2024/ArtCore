@@ -91,7 +91,6 @@ const UserLogin = () => {
               className="size-8 rounded-full"
               width={50}
               height={50}
-              priority
             />
             {user.name || 'User'}
           </div>

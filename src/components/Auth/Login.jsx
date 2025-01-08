@@ -62,37 +62,32 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Ensure a role is selected
     if (selectedRole === 'Select Your Role') {
       toast.error('Please select a role', { position: 'top-center' });
       return;
     }
 
     try {
+      // Send login request
       const response = await axios.post('/api/login', {
         email: formData.email,
         password: formData.password,
         role: selectedRole.toLowerCase(),
       });
 
-      const user = response.data.user;
+      const { user, token } = response.data;
 
-      if (rememberMe) {
-        localStorage.setItem('user', JSON.stringify(user));
-      } else {
-        localStorage.removeItem('user');
-      }
+      // Store token for session persistence
+      localStorage.setItem('token', token);
 
       toast.success('Login successful!', { position: 'top-center' });
 
+      // Redirect based on role
       if (user.role === 'user') {
-        await router.push('/');
+        router.push('/');
       } else if (user.role === 'admin' || user.role === 'super-admin') {
         router.push('/admin');
-      } else {
-        throw new Error('Invalid role');
-      }
-      if (pathname == '/') {
-        window.location.reload();
       }
     } catch (error) {
       toast.error(
@@ -128,7 +123,7 @@ const Login = () => {
                 </button>
                 {dropdownOpen && (
                   <div className="absolute top-full mt-1 w-full text-center font-semibold border border-green-500 bg-black rounded-md shadow-lg py-1 z-20">
-                    {['User', 'Admin', 'Super Admin'].map((role) => (
+                    {['User', 'Admin'].map((role) => (
                       <div
                         key={role}
                         onClick={() => handleOptionClick(role)}

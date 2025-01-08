@@ -34,10 +34,10 @@ const Auth = () => {
         setLogin={setLogin}
         setSignup={setSignup}
       />
-      <div className='bg-[#0000008f] backdrop-blur-md border-2 border-green-500 h-[72%] w-[44rem] mt-24 rounded-md p-5 px-4 flex flex-col items-center justify-between z-10 shadow-md drop-shadow-2xl shadow-green-400'>
+      <div className='bg-[#0000008f] backdrop-blur-md border-2 border-green-500 h-[72%] w-[53rem] mt-24 rounded-md p-5 px-4 flex flex-col items-center justify-between z-10 shadow-md drop-shadow-2xl shadow-green-400'>
         {isLogin ? <Login /> : <Signup />}
       </div>
-      <SocialLogins />
+      {/* <SocialLogins /> */}
     </div>
   )
 }

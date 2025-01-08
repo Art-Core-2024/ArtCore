@@ -1,11 +1,35 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import axios from 'axios';
 import SidePanel from '@/components/Admin/SidePanel';
 import AdminContent from '@/components/Admin/AdminContent';
 import Image from 'next/image';
 
 const Admin = () => {
     const [activePanel, setActivePanel] = useState('artworks');
+    const router = useRouter();
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            router.push('/');
+            return;
+        }
+
+        // Verify the token
+        axios
+            .post('/api/verify-token', { token })
+            .then((response) => {
+                const { role } = response.data;
+                if (role !== 'admin' && role !== 'super-admin') {
+                    router.push('/');
+                }
+            })
+            .catch(() => {
+                router.push('/');
+            });
+    }, [router]);
 
     return (
         <div className='h-screen w-full text-white flex items-center justify-between'>
