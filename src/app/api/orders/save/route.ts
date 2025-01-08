@@ -25,7 +25,7 @@ async function sendOrderEmail(userEmail: string, adminEmail: string, orderDetail
         Order ID: ${orderDetails._id}
         Artwork ID: ${orderDetails.artworkId}
         Quantity: ${orderDetails.quantity}
-        Total Amount: ₹${orderDetails.amount / 100} // Convert paise to INR
+        Total Amount: ₹${orderDetails.amount / 100}
         Address: ${orderDetails.address}
         Payment ID: ${orderDetails.paymentId}
         Status: ${orderDetails.status}
@@ -41,7 +41,7 @@ async function sendOrderEmail(userEmail: string, adminEmail: string, orderDetail
 }
 
 export async function POST(req: Request) {
-    const { paymentId, address, artworkId, quantity, email, status } = await req.json();
+    const { paymentId, address, artworkId, quantity, email, status, amount } = await req.json();
 
     if (!paymentId || !artworkId || !email || (!address && !quantity)) {
         return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -55,9 +55,6 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'User not found' }, { status: 404 });
         }
 
-        const artworkPrice = 1000; // Replace this with the actual price lookup if available
-        const amount = quantity * artworkPrice * 100; // Amount in paise
-
         const newOrder = await Order.create({
             userId: user._id,
             artworkId,
@@ -65,7 +62,7 @@ export async function POST(req: Request) {
             address,
             paymentId,
             status,
-            amount,
+            amount
         });
 
         await sendOrderEmail(user.email, process.env.NEXT_PUBLIC_GMAIL_USER!, newOrder);

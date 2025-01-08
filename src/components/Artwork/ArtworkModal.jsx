@@ -75,8 +75,7 @@ const ArtworkModal = ({ artwork, closeModal }) => {
         }
 
         try {
-            // Calculate amount in paise
-            const amountInPaise = quantity * artwork.price * 100;
+            const amountInPaise = quantity * artwork.price * 100; // Calculate amount in paise
 
             // Create Razorpay order
             const { data: paymentOrder } = await axios.post('/api/orders/create', {
@@ -84,18 +83,17 @@ const ArtworkModal = ({ artwork, closeModal }) => {
                 quantity,
                 email: userData.email,
                 address: selectedAddress || newAddress.trim(),
-                amount: amountInPaise, // Pass amount in paise to backend
+                amount: amountInPaise,
             });
 
             const options = {
-                key: paymentOrder.key, // Use Razorpay Key ID from the backend
+                key: paymentOrder.key,
                 amount: paymentOrder.amount,
                 currency: 'INR',
                 name: 'Art Core',
                 description: artwork.name,
                 order_id: paymentOrder.orderId,
                 handler: async (response) => {
-                    // Save order details and send email
                     await axios.post('/api/orders/save', {
                         paymentId: response.razorpay_payment_id,
                         address: selectedAddress || newAddress.trim(),
@@ -103,6 +101,7 @@ const ArtworkModal = ({ artwork, closeModal }) => {
                         quantity,
                         email: userData.email,
                         status: 'paid',
+                        amount: amountInPaise / 100,
                     });
 
                     toast.success('Payment successful!');

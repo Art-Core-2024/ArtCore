@@ -1,14 +1,14 @@
 import mongoose from 'mongoose';
 
 const OrderSchema = new mongoose.Schema({
-    artworkId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Artwork',
-        required: true,
-    },
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Users',
+        required: true,
+    },
+    artworkId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Artworks',
         required: true,
     },
     quantity: {
@@ -25,8 +25,12 @@ const OrderSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['pending', 'paid', 'failed'],
-        default: 'pending',
+        enum: ['Pending', 'Processing', 'Delivered'],
+        default: 'Pending', // Default to Pending
+    },
+    amount: {
+        type: Number,
+        required: true,
     },
     createdAt: {
         type: Date,
