@@ -27,12 +27,13 @@ const UserSchema = new mongoose.Schema({
     type: String,
     enum: ['user', 'admin', 'super-admin'],
     default: 'user',
-    required: true
+    required: true,
   },
-  address: {
-    type: String, // New field
-    required: false, // Optional field
-  }
+  address: [
+    {
+      type: String, // Change to an array of strings
+    },
+  ],
 });
 
 const User = mongoose.models.Users || mongoose.model('Users', UserSchema);
