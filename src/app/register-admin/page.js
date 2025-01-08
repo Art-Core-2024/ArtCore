@@ -1,7 +1,9 @@
 'use client';
 import Image from 'next/image';
-import { useRouter, useSearchParams } from 'next/navigation'; // Use this to get query params
+import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useState } from 'react';
+
+export const dynamic = 'force-dynamic'; // Ensure dynamic rendering to avoid prerender errors
 
 const RegisterAdmin = () => {
     const searchParams = useSearchParams();
