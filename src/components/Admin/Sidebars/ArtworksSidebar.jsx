@@ -71,7 +71,7 @@ const ArtworksSidebar = ({ artwork, closeSidebar, refreshArtworks }) => {
         const confirm = window.confirm('Are you sure you want to delete this artwork?');
         if (!confirm) return;
 
-        const response = await fetch(`/api/artworks/${artwork._id}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/artworks/${artwork._id}`, {
             method: 'DELETE',
         });
 
@@ -87,8 +87,8 @@ const ArtworksSidebar = ({ artwork, closeSidebar, refreshArtworks }) => {
         e.preventDefault();
 
         const url = artwork
-            ? `/api/artworks/${artwork._id}`
-            : '/api/artworks';
+            ? `${process.env.NEXT_PUBLIC_BASE_URL}/api/artworks/${artwork._id}`
+            : '${process.env.NEXT_PUBLIC_BASE_URL}/api/artworks';
         const method = artwork ? 'PUT' : 'POST';
 
         const response = await fetch(url, {

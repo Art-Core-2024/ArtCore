@@ -11,7 +11,7 @@ const ManageAdmins = () => {
   // Fetch admins and pending invites
   const fetchAdminsAndInvites = async () => {
     try {
-      const response = await fetch('/api/admins');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/admins`);
       const data = await response.json();
       setAdmins(data.activeAdmins || []);
       setPendingInvites(data.pendingInvites || []);
@@ -62,7 +62,7 @@ const ManageAdmins = () => {
                     onClick={async () => {
                       // Delete pending invite logic
                       try {
-                        await fetch(`/api/admins/invite/${invite._id}`, { method: 'DELETE' });
+                        await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/admins/invite/${invite._id}`, { method: 'DELETE' });
                         fetchAdminsAndInvites();
                       } catch (error) {
                         console.error('Failed to delete invite:', error);
@@ -95,7 +95,7 @@ const ManageAdmins = () => {
                   onClick={async () => {
                     // Delete admin logic
                     try {
-                      await fetch(`/api/admins/${admin._id}`, { method: 'DELETE' });
+                      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/admins/${admin._id}`, { method: 'DELETE' });
                       fetchAdminsAndInvites(); // Refresh data
                     } catch (error) {
                       console.error('Failed to delete admin:', error);

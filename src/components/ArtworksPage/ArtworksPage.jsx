@@ -15,7 +15,7 @@ const ArtworksPage = () => {
     // Fetch artworks from API
     useEffect(() => {
         const fetchArtworks = async () => {
-            const response = await fetch('/api/artworks');
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/artworks`);
             const data = await response.json();
             setArtworks(data);
             setFilteredArtworks(data);

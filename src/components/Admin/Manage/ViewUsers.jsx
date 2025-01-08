@@ -14,7 +14,7 @@ const ViewUsers = () => {
     const fetchUsers = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('/api/users');
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users`);
         setUsers(response.data.users);
         setFilteredUsers(response.data.users);
         setLoading(false);

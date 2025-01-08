@@ -38,7 +38,7 @@ const Signup = ({ setIsLogin }) => {
     }
 
     try {
-      await axios.post('/api/signup', {
+      await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/signup`, {
         username: formData.username,
         name: formData.name,
         email: formData.email,

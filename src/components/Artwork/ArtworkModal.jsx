@@ -24,7 +24,7 @@ const ArtworkModal = ({ artwork, closeModal }) => {
                     return;
                 }
 
-                const response = await axios.get(`/api/profile?email=${encodeURIComponent(storedUser.email)}`);
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/profile?email=${encodeURIComponent(storedUser.email)}`);
                 if (response.status === 200) {
                     setUserData(response.data);
                     setAddresses(response.data.address || []);
@@ -78,7 +78,7 @@ const ArtworkModal = ({ artwork, closeModal }) => {
             const amountInPaise = quantity * artwork.price * 100; // Calculate amount in paise
 
             // Create Razorpay order
-            const { data: paymentOrder } = await axios.post('/api/orders/create', {
+            const { data: paymentOrder } = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/orders/create`, {
                 artworkId: artwork._id,
                 quantity,
                 email: userData.email,
@@ -94,7 +94,7 @@ const ArtworkModal = ({ artwork, closeModal }) => {
                 description: artwork.name,
                 order_id: paymentOrder.orderId,
                 handler: async (response) => {
-                    await axios.post('/api/orders/save', {
+                    await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/orders/save`, {
                         paymentId: response.razorpay_payment_id,
                         address: selectedAddress || newAddress.trim(),
                         artworkId: artwork._id,

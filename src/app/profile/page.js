@@ -31,7 +31,7 @@ const Profile = () => {
                 return;
             }
 
-            const response = await fetch(`/api/profile?email=${encodeURIComponent(userEmail)}`);
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/profile?email=${encodeURIComponent(userEmail)}`);
             const data = await response.json();
 
             if (response.ok) {
@@ -85,7 +85,7 @@ const Profile = () => {
     const updateProfile = async () => {
         setLoading(true);
         try {
-            const response = await fetch(`/api/profile`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/profile`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
