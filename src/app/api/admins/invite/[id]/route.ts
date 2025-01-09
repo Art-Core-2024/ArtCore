@@ -30,11 +30,3 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
         );
     }
 }
-
-// OPTIONS (Optional, for CORS preflight requests)
-export function OPTIONS() {
-    return NextResponse.json(
-        { message: 'Allowed methods: DELETE' },
-        { status: 200 }
-    );
-}

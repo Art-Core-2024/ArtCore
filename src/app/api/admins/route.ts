@@ -26,11 +26,3 @@ export async function GET() {
         );
     }
 }
-
-// OPTIONS (Optional, for CORS preflight requests)
-export function OPTIONS() {
-    return NextResponse.json(
-        { message: 'Allowed methods: POST' },
-        { status: 200 }
-    );
-}

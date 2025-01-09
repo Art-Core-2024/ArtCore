@@ -63,16 +63,3 @@ export async function POST(req: Request) {
         );
     }
 }
-
-/**
- * Handle unsupported methods.
- */
-export function OPTIONS() {
-    const allowedMethods = ['GET', 'POST'];
-    return new Response(null, {
-        status: 405,
-        headers: {
-            Allow: allowedMethods.join(', '),
-        },
-    });
-}
