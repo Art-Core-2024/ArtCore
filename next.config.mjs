@@ -9,9 +9,6 @@ const nextConfig = {
             { hostname: 'drive.google.com' }
         ],
     },
-    experimental: {
-        outputFileTracingExcludes: { '*': ['**/app/api/**'] }
-    },
     async headers() {
         return [
             {
