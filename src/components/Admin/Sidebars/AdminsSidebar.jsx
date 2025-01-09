@@ -10,7 +10,7 @@ const AdminsSidebar = ({ closeSidebar, refreshAdmins }) => {
         if (!email) return alert('Please enter an email address.');
         setLoading(true);
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/admins/invite`, {
+            const response = await fetch(`/api/admins/invite`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email }),

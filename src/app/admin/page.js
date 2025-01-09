@@ -19,7 +19,7 @@ const Admin = () => {
 
         // Verify the token
         axios
-            .post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/verify-token`, { token })
+            .post(`/api/verify-token`, { token })
             .then((response) => {
                 const { role } = response.data;
                 if (role !== 'admin' && role !== 'super-admin') {

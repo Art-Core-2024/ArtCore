@@ -12,7 +12,7 @@ const Artwork = () => {
     useEffect(() => {
         const fetchArtworks = async () => {
             try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/artworks`);
+                const response = await fetch(`/api/artworks`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

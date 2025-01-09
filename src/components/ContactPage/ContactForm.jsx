@@ -43,7 +43,7 @@ const ContactForm = () => {
         setIsSending(true);
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/sendEmail`, {
+            const response = await fetch(`/api/sendEmail`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),

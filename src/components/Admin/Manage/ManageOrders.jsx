@@ -16,7 +16,7 @@ const ManageOrders = () => {
     const fetchOrders = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/orders`);
+        const response = await axios.get(`/api/orders`);
         setOrders(response.data.orders);
         setFilteredOrders(response.data.orders);
         setLoading(false);
@@ -44,7 +44,7 @@ const ManageOrders = () => {
   // Handle status change for an order
   const handleStatusChange = async (orderId, newStatus) => {
     try {
-      await axios.put(`${process.env.NEXT_PUBLIC_BASE_URL}/api/orders/${orderId}`, { status: newStatus });
+      await axios.put(`/api/orders/${orderId}`, { status: newStatus });
       setOrders((prevOrders) =>
         prevOrders.map((order) =>
           order._id === orderId ? { ...order, status: newStatus } : order

@@ -14,7 +14,7 @@ const ManageArtworks = () => {
 
     useEffect(() => {
         const fetchArtworks = async () => {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/artworks`);
+            const response = await fetch(`/api/artworks`);
             const data = await response.json();
             setArtworks(data);
         };
