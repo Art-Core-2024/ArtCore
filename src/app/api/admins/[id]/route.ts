@@ -3,7 +3,8 @@ import dbConnect from '@/lib/dbConnect';
 import Admin from '@/models/admin';
 
 // Delete an admin by ID
-export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(req: Request, context: { params: { id: string } }) {
+    const { params } = context;
     try {
         await dbConnect();
 
