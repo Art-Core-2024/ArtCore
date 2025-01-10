@@ -2,14 +2,20 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/dbConnect';
 import Admin from '@/models/admin';
 
+interface Context {
+    params: Promise<{
+        id: string;
+    }>;
+}
+
 // Delete an admin by ID
-export async function DELETE(req: Request, context: { params: { id: string } }) {
-    const { params } = context;
+export async function DELETE(req: Request, context: Context) {
     try {
         await dbConnect();
 
-        // Find and delete the admin by ID
-        const admin = await Admin.findByIdAndDelete(params.id);
+        // Ensure params.id is correctly extracted and used
+        const { id } = await context.params;
+        const admin = await Admin.findByIdAndDelete(id);
 
         if (!admin) {
             return NextResponse.json(
@@ -22,10 +28,9 @@ export async function DELETE(req: Request, context: { params: { id: string } }) 
             { message: 'Admin deleted successfully.' },
             { status: 200 }
         );
-    } catch (error) {
-        console.error('Error deleting admin:', error);
+    } catch {
         return NextResponse.json(
-            { error: 'Failed to delete admin.' },
+            { error: 'An error occurred while deleting the admin.' },
             { status: 500 }
         );
     }

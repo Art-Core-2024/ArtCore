@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
             { message: 'Token is valid', role: decoded?.role },
             { status: 200 }
         );
-    } catch (error) {
+    } catch {
         return NextResponse.json(
             { message: 'Invalid or expired token' },
             { status: 401 }

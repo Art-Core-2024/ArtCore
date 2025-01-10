@@ -1,7 +1,13 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/dbConnect';
 import Artwork from '@/models/artworks';
 import { deleteFileFromDrive } from '@/utils/googleDrive';
+
+interface Context {
+    params: Promise<{
+        id: string;
+    }>;
+}
 
 // Ensure database connection
 dbConnect();
@@ -9,54 +15,57 @@ dbConnect();
 /**
  * Handle PUT request: Update artwork details by ID.
  */
-export async function PUT(req: Request, { params }: { params: { id: string } }) {
+export async function PUT(req: NextRequest, context: Context) {
     try {
-        const id = params.id;
+        const { id } = await context.params; // Extract ID from the dynamic route
         const { name, type, price, description, featured, image } = await req.json();
+
+        await dbConnect();
 
         const artwork = await Artwork.findById(id);
         if (!artwork) {
             return NextResponse.json({ message: 'Artwork not found' }, { status: 404 });
         }
 
-        // If a new image is provided, delete the old one
-        if (image && artwork.image) {
-            const oldFileId = artwork.image.split('id=')[1]; // Extract file ID from the URL
-            await deleteFileFromDrive(oldFileId);
-        }
+        artwork.name = name;
+        artwork.type = type;
+        artwork.price = price;
+        artwork.description = description;
+        artwork.featured = featured;
+        artwork.image = image;
 
-        // Update artwork details
-        artwork.name = name ?? artwork.name;
-        artwork.type = type ?? artwork.type;
-        artwork.price = price ?? artwork.price;
-        artwork.description = description ?? artwork.description;
-        artwork.featured = featured ?? artwork.featured;
-        if (image) {
-            artwork.image = image;
-        }
+        await artwork.save();
 
-        const updatedArtwork = await artwork.save();
-        return NextResponse.json(updatedArtwork, { status: 200 });
+        return NextResponse.json({ message: 'Artwork updated successfully', artwork }, { status: 200 });
     } catch (error) {
-        return NextResponse.json({ message: 'Failed to update artwork', error: error.message }, { status: 500 });
+        const errorMessage = (error as Error).message;
+        return NextResponse.json({ message: 'Failed to update artwork', error: errorMessage }, { status: 500 });
     }
 }
 
 /**
  * Handle DELETE request: Delete artwork by ID.
  */
-export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, context: Context) {
     try {
-        const id = params.id;
+        const { id } = await context.params; // Extract ID from the dynamic route
 
-        const artwork = await Artwork.findById(id);
-        if (!artwork) {
-            return NextResponse.json({ message: 'Artwork not found' }, { status: 404 });
+        if (!id) {
+            return NextResponse.json({ error: 'Artwork ID is required.' }, { status: 400 });
         }
 
-        // Delete the image from Google Drive
-        if (artwork.image) {
-            const fileId = artwork.image.split('id=')[1]; // Extract file ID from the URL
+        await dbConnect();
+
+        // Find the artwork by ID
+        const artwork = await Artwork.findById(id);
+
+        if (!artwork) {
+            return NextResponse.json({ error: 'Artwork not found.' }, { status: 404 });
+        }
+
+        // Delete the associated file from the drive
+        const fileId = artwork.image.split('id=')[1]; // Extract file ID from the URL
+        if (fileId) {
             await deleteFileFromDrive(fileId);
         }
 
@@ -64,6 +73,7 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
         await artwork.deleteOne();
         return NextResponse.json({ message: 'Artwork deleted successfully' }, { status: 200 });
     } catch (error) {
-        return NextResponse.json({ message: 'Failed to delete artwork', error: error.message }, { status: 500 });
+        const errorMessage = (error as Error).message;
+        return NextResponse.json({ message: 'Failed to delete artwork', error: errorMessage }, { status: 500 });
     }
 }

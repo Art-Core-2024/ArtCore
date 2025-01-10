@@ -3,8 +3,6 @@ import Image from 'next/image';
 import React from 'react';
 import ContactForm from '@/components/ContactPage/ContactForm';
 import ContactSocials from '@/components/ContactPage/ContactSocials';
-import Link from 'next/link';
-import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 
 const Contact = () => {

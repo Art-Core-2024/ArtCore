@@ -2,7 +2,7 @@ import { google } from 'googleapis';
 import { Readable } from 'stream';
 
 // Google Drive Folder ID where images will be uploaded
-const FOLDER_ID = process.env.NEXT_PUBLIC_GOOGLE_DRIVE_FOLDER_ID;
+const FOLDER_ID = process.env.NEXT_PUBLIC_GOOGLE_DRIVE_FOLDER_ID || '';
 
 if (!FOLDER_ID) {
     throw new Error('Please define the NEXT_PUBLIC_GOOGLE_DRIVE_FOLDER_ID in your .env.local file');
@@ -34,23 +34,21 @@ const drive = google.drive({ version: 'v3', auth });
  * @returns The public URL of the uploaded file
  */
 export async function uploadFileToDrive(fileName: string, fileBuffer: Buffer): Promise<string> {
-    const fileMetadata = {
-        name: fileName,
-        parents: [FOLDER_ID],
-    };
-
     const media = {
         mimeType: 'image/jpeg', // Change this if your images are in other formats
         body: Readable.from(fileBuffer),
     };
 
     const response = await drive.files.create({
-        requestBody: fileMetadata,
+        requestBody: {
+            name: fileName,
+            parents: [FOLDER_ID],
+        },
         media: media,
         fields: 'id',
     });
 
-    const fileId = response.data.id;
+    const fileId = response.data.id as string;
 
     // Make the file publicly accessible
     await drive.permissions.create({

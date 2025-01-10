@@ -2,9 +2,15 @@ import { NextResponse, NextRequest } from 'next/server';
 import dbConnect from '@/lib/dbConnect';
 import PendingInvite from '@/models/pendingInvite';
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+interface Context {
+    params: Promise<{
+        id: string;
+    }>;
+}
+
+export async function DELETE(req: NextRequest, context: Context) {
     try {
-        const { id } = params; // Extract ID from the dynamic route
+        const { id } = await context.params; // Extract ID from the dynamic route
 
         if (!id) {
             return NextResponse.json({ error: 'Invite ID is required.' }, { status: 400 });
@@ -13,20 +19,14 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
         await dbConnect();
 
         // Find and delete the invite
-        const deletedInvite = await PendingInvite.findByIdAndDelete(id);
-        if (!deletedInvite) {
+        const invite = await PendingInvite.findByIdAndDelete(id);
+
+        if (!invite) {
             return NextResponse.json({ error: 'Invite not found.' }, { status: 404 });
         }
 
-        return NextResponse.json(
-            { message: 'Invite canceled successfully.' },
-            { status: 200 }
-        );
-    } catch (error) {
-        console.error('Error deleting invite:', error);
-        return NextResponse.json(
-            { error: 'Failed to cancel invite.' },
-            { status: 500 }
-        );
+        return NextResponse.json({ message: 'Invite deleted successfully.' }, { status: 200 });
+    } catch {
+        return NextResponse.json({ error: 'An error occurred while deleting the invite.' }, { status: 500 });
     }
 }

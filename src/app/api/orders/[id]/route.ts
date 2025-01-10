@@ -2,7 +2,14 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/dbConnect';
 import Order from '@/models/orders';
 
-export async function PUT(req: Request, { params }: { params: { id: string } }) {
+interface Context {
+    params: Promise<{
+        id: string;
+    }>;
+}
+
+export async function PUT(req: Request, context: Context) {
+    const { id } = await context.params; // Extract ID from the dynamic route
     const { status } = await req.json();
 
     if (!status || !['Pending', 'Processing', 'Delivered'].includes(status)) {
@@ -12,18 +19,15 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
     await dbConnect();
 
     try {
-        const order = await Order.findByIdAndUpdate(
-            params.id,
-            { status },
-            { new: true }
-        );
+        const order = await Order.findByIdAndUpdate(id, { status }, { new: true });
+
         if (!order) {
             return NextResponse.json({ error: 'Order not found' }, { status: 404 });
         }
 
-        return NextResponse.json({ message: 'Order status updated successfully', order });
+        return NextResponse.json({ message: 'Order updated successfully', order }, { status: 200 });
     } catch (error) {
-        console.error('Error updating order status:', error);
-        return NextResponse.json({ error: 'Failed to update order status' }, { status: 500 });
+        const errorMessage = (error as Error).message;
+        return NextResponse.json({ message: 'Failed to update order', error: errorMessage }, { status: 500 });
     }
-};
+}

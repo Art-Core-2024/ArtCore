@@ -19,6 +19,18 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals",
     "next/typescript",
     'plugin:@typescript-eslint/recommended'),
+  {
+    rules: {
+      '@typescript-eslint/no-unused-expressions': [
+        'error',
+        {
+          allowShortCircuit: true,
+          allowTernary: true,
+          allowTaggedTemplates: true,
+        },
+      ],
+    },
+  },
 ];
 
 export default eslintConfig;

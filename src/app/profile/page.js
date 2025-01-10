@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
-import { PlusCircleIcon, UserCircleIcon } from '@heroicons/react/24/solid';
+import { UserCircleIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import { toast, ToastContainer } from 'react-toastify';
 import { useRouter } from 'next/navigation';

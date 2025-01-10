@@ -22,8 +22,11 @@ export async function GET(req: NextRequest) {
             return NextResponse.json({ message: 'User not found' }, { status: 404 });
         }
         return NextResponse.json(user, { status: 200 });
-    } catch (error: any) {
-        return NextResponse.json({ message: 'Failed to fetch user', error: error.message }, { status: 500 });
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return NextResponse.json({ message: 'Failed to fetch user', error: error.message }, { status: 500 });
+        }
+        return NextResponse.json({ message: 'Failed to fetch user', error: 'Unknown error' }, { status: 500 });
     }
 }
 
@@ -48,10 +51,11 @@ export async function PUT(req: NextRequest) {
         if (!updatedUser) {
             return NextResponse.json({ message: 'User not found' }, { status: 404 });
         }
-
-        return NextResponse.json({ message: 'User updated successfully', user: updatedUser }, { status: 200 });
-    } catch (error: any) {
-        return NextResponse.json({ message: 'Failed to update user', error: error.message }, { status: 500 });
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return NextResponse.json({ message: 'Failed to update user', error: error.message }, { status: 500 });
+        }
+        return NextResponse.json({ message: 'Failed to update user', error: 'Unknown error' }, { status: 500 });
     }
 }
 
@@ -67,13 +71,10 @@ export async function DELETE(req: NextRequest) {
     }
 
     try {
-        const deletedUser = await User.findByIdAndDelete(id);
-        if (!deletedUser) {
-            return NextResponse.json({ message: 'User not found' }, { status: 404 });
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return NextResponse.json({ message: 'Failed to delete user', error: error.message }, { status: 500 });
         }
-
-        return NextResponse.json({ message: 'User deleted successfully' }, { status: 200 });
-    } catch (error: any) {
-        return NextResponse.json({ message: 'Failed to delete user', error: error.message }, { status: 500 });
+        return NextResponse.json({ message: 'Failed to delete user', error: 'Unknown error' }, { status: 500 });
     }
 }

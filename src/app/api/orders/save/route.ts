@@ -4,7 +4,17 @@ import Order from '@/models/orders';
 import User from '@/models/user';
 import nodemailer from 'nodemailer';
 
-async function sendOrderEmail(userEmail: string, adminEmail: string, orderDetails: any) {
+interface OrderDetails {
+    _id: string;
+    artworkId: string;
+    quantity: number;
+    amount: number;
+    address: string;
+    paymentId: string;
+    status: string;
+}
+
+async function sendOrderEmail(userEmail: string, adminEmail: string, orderDetails: OrderDetails) {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
