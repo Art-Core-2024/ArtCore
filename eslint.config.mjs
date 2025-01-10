@@ -21,10 +21,4 @@ const eslintConfig = [
     'plugin:@typescript-eslint/recommended'),
 ];
 
-eslintConfig.push({
-  rules: {
-    '@typescript-eslint/no-unused-expressions': 'off',
-  },
-});
-
 export default eslintConfig;
