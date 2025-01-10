@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
             ) {
                 const token = jwt.sign(
                     { email, role: 'super-admin' },
-                    process.env.NEXT_PUBLIC_JWT_SECRET,
+                    process.env.JWT_SECRET as string,
                     { expiresIn: '1h' }
                 );
 
@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
 
             const token = jwt.sign(
                 { email: admin.email, role: 'admin' },
-                process.env.NEXT_PUBLIC_JWT_SECRET,
+                process.env.JWT_SECRET as string,
                 { expiresIn: '1h' }
             );
 
@@ -88,6 +88,12 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ message: 'Invalid password' }, { status: 401 });
         }
 
+        const token = jwt.sign(
+            { email: user.email, role: user.role },
+            process.env.JWT_SECRET as string,
+            { expiresIn: '1h' }
+        );
+
         return NextResponse.json(
             {
                 message: 'Login successful',
@@ -96,6 +102,7 @@ export async function POST(req: NextRequest) {
                     email: user.email,
                     role: user.role,
                 },
+                token,
             },
             { status: 200 }
         );

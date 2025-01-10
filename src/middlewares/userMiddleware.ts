@@ -1,11 +1,13 @@
-export const userMiddleware = async (body) => {
-  const { name, email, username, phoneNumber, password } = body;
+import { userSignupSchema } from '@/schemas/userSchema';
 
-  // Perform schema validation (e.g., using Zod or custom checks)
-  if (!name || !email || !username || !phoneNumber || !password) {
-    return { message: 'Missing required fields' };
+export const userMiddleware = async (body: any) => {
+  try {
+    userSignupSchema.parse(body); // Validate body against Zod schema
+    return null; // Return null if no validation errors
+  } catch (error) {
+    if (error instanceof Error) {
+      return { message: 'Validation failed', errors: (error as any).errors };
+    }
+    return { message: 'Unknown validation error' };
   }
-
-  // Return null if no errors
-  return null;
 };

@@ -10,30 +10,6 @@ const UserLogin = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  useEffect(() => {
-    // Firebase Auth State Listener
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      if (firebaseUser) {
-        setUser({
-          displayName: firebaseUser.displayName,
-          photoURL: firebaseUser.photoURL,
-          email: firebaseUser.email,
-        });
-      } else {
-        // Check local storage for local login session
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-          setUser(JSON.parse(storedUser));
-        } else {
-          setUser(null);
-        }
-      }
-    });
-
-    // Cleanup subscription on component unmount
-    return () => unsubscribe();
-  }, []);
-
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
@@ -56,22 +32,42 @@ const UserLogin = () => {
     };
   }, [dropdownOpen]);
 
+  useEffect(() => {
+    const syncUserState = () => {
+      const storedUser = localStorage.getItem('user');
+      setUser(storedUser ? JSON.parse(storedUser) : null);
+    };
+
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        setUser({
+          displayName: firebaseUser.displayName,
+          photoURL: firebaseUser.photoURL,
+          email: firebaseUser.email,
+        });
+      } else {
+        syncUserState();
+      }
+    });
+
+    window.addEventListener('storage', syncUserState);
+
+    return () => {
+      unsubscribe();
+      window.removeEventListener('storage', syncUserState);
+    };
+  }, []);
+
   const handleLogout = async () => {
     try {
       if (auth.currentUser) {
-        // If logged in via Firebase (social media or email/password)
         await signOut(auth);
-        console.log('Firebase user signed out');
         window.location.reload();
       }
 
-      // Clear local session if present
       localStorage.removeItem('user');
       setUser(null);
-      setDropdownOpen(false);
       window.location.reload();
-
-      console.log('User successfully signed out');
     } catch (error) {
       console.error('Error during logout:', error);
     }

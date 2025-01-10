@@ -1,4 +1,3 @@
-'use client';
 import {
   EnvelopeIcon,
   EyeIcon,
@@ -38,7 +37,7 @@ const Signup = ({ setIsLogin }) => {
     }
 
     try {
-      await axios.post(`/api/signup`, {
+      const response = await axios.post(`/api/signup`, {
         username: formData.username,
         name: formData.name,
         email: formData.email,
@@ -47,10 +46,13 @@ const Signup = ({ setIsLogin }) => {
         role: 'user',
       });
 
-      toast.success('Signup successful');
-      setIsLogin(false);
+      if (response.status === 201) {
+        toast.success('Signup successful');
+        setIsLogin(false); // Switch to Login tab
+      } else {
+        toast.error('Unexpected response. Please try again.');
+      }
     } catch (error) {
-      console.error('Signup error:', error);
       if (error.response?.data?.errors) {
         error.response.data.errors.forEach((err) => {
           toast.error(`Error in ${err.path}: ${err.message}`);

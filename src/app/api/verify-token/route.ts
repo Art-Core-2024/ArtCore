@@ -12,10 +12,10 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        const decoded = jwt.verify(token, process.env.NEXT_PUBLIC_JWT_SECRET);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as jwt.JwtPayload;
 
         return NextResponse.json(
-            { message: 'Token is valid', role: decoded.role },
+            { message: 'Token is valid', role: decoded?.role },
             { status: 200 }
         );
     } catch (error) {

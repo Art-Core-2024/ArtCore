@@ -62,14 +62,12 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Ensure a role is selected
     if (selectedRole === 'Select Your Role') {
-      toast.error('Please select a role', { position: 'top-center' });
+      toast.error('Please select a role');
       return;
     }
 
     try {
-      // Send login request
       const response = await axios.post(`/api/login`, {
         email: formData.email,
         password: formData.password,
@@ -78,22 +76,20 @@ const Login = () => {
 
       const { user, token } = response.data;
 
-      // Store token for session persistence
+      // Store user details in localStorage
+      localStorage.setItem('user', JSON.stringify(user));
       localStorage.setItem('token', token);
 
-      toast.success('Login successful!', { position: 'top-center' });
+      toast.success('Login successful!');
 
-      // Redirect based on role
-      if (user.role === 'user') {
-        router.push('/');
-      } else if (user.role === 'admin' || user.role === 'super-admin') {
-        router.push('/admin');
+      // Route based on user role
+      if (user.role === 'admin' || user.role === 'super-admin') {
+        router.push('/admin'); // Route to admin dashboard
+      } else {
+        router.push('/'); // Route to user homepage
       }
     } catch (error) {
-      toast.error(
-        error.response?.data?.message || 'Login failed. Try again.',
-        { position: 'top-center' }
-      );
+      toast.error('Login failed. Please try again.');
     }
   };
 

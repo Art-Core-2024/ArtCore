@@ -10,7 +10,11 @@ const LeftSection = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Firebase Auth State Listener
+    const syncUserState = () => {
+      const storedUser = localStorage.getItem('user');
+      setUser(storedUser ? JSON.parse(storedUser) : null);
+    };
+
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
         setUser({
@@ -19,18 +23,16 @@ const LeftSection = () => {
           email: firebaseUser.email,
         });
       } else {
-        // Check local storage for local login session
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-          setUser(JSON.parse(storedUser));
-        } else {
-          setUser(null);
-        }
+        syncUserState();
       }
     });
 
-    // Cleanup subscription on component unmount
-    return () => unsubscribe();
+    window.addEventListener('storage', syncUserState);
+
+    return () => {
+      unsubscribe();
+      window.removeEventListener('storage', syncUserState);
+    };
   }, []);
 
   const [dropdownOpen, setDropdownOpen] = useState(false);

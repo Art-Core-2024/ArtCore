@@ -6,6 +6,7 @@ export async function GET() {
     await dbConnect();
 
     try {
+        // Populate userId to include name and email
         const orders = await Order.find().populate('userId', 'name email');
         return NextResponse.json({ orders });
     } catch (error) {

@@ -4,29 +4,26 @@ import UserSchema from '@/models/user';
 import bcrypt from 'bcrypt';
 import { userMiddleware } from '@/middlewares/userMiddleware';
 
-export const dynamic = 'force-dynamic';
-
 export async function POST(req: NextRequest) {
   try {
-    // Cache the body once
     const body = await req.json();
+    console.log('Incoming request body:', body); // Debug log
 
-    // Middleware validation with cached body
     const validationError = await userMiddleware(body);
     if (validationError) {
+      console.error('Validation error:', validationError); // Debug log
       return NextResponse.json(
-        { message: 'Validation error', error: validationError },
+        { message: validationError.message, errors: validationError.errors },
         { status: 400 }
       );
     }
 
-    const { username, name, email, password, phoneNumber, role = 'user' } = body;
+    const { username, name, email, phoneNumber, password, role = 'user' } = body;
 
-    // Database connection
     await dbConnect();
 
-    // Check for duplicate email
     const existingEmail = await UserSchema.findOne({ email });
+    console.log('Existing email check:', existingEmail); // Debug log
     if (existingEmail) {
       return NextResponse.json(
         { message: 'Email already exists' },
@@ -34,8 +31,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Check for duplicate username
     const existingUsername = await UserSchema.findOne({ username });
+    console.log('Existing username check:', existingUsername); // Debug log
     if (existingUsername) {
       return NextResponse.json(
         { message: 'Username already exists' },
@@ -43,10 +40,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create and save the new user
     const newUser = new UserSchema({
       username,
       name,
@@ -55,29 +50,27 @@ export async function POST(req: NextRequest) {
       password: hashedPassword,
       role,
     });
-
     await newUser.save();
 
-    // Return success response
     return NextResponse.json(
       { message: 'User created successfully' },
       { status: 201 }
     );
   } catch (error) {
-    console.error('Signup Error:', error);
+    console.error('Signup Error:', error); // Debug log
 
-    // Catch validation errors for missing or invalid fields
-    if (error.name === 'ValidationError') {
+    if (error instanceof Error && error.name === 'ValidationError') {
       return NextResponse.json(
         { message: 'Invalid user data', error: error.message },
         { status: 400 }
       );
     }
 
-    // General server error
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+
     return NextResponse.json(
-      { message: 'Internal Server Error', error: error.message },
+      { message: 'Internal Server Error', error: errorMessage },
       { status: 500 }
     );
   }
-}
+};
