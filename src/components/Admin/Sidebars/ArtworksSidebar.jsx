@@ -12,6 +12,7 @@ const ArtworksSidebar = ({ artwork, closeSidebar, refreshArtworks }) => {
         price: '',
         description: '',
         featured: false,
+        minOrderQuantity: 1,
     });
 
     const dropdownRef = useRef(null);
@@ -25,6 +26,7 @@ const ArtworksSidebar = ({ artwork, closeSidebar, refreshArtworks }) => {
                 price: artwork.price,
                 description: artwork.description,
                 featured: artwork.featured,
+                minOrderQuantity: artwork.minOrderQuantity,
             });
         }
     }, [artwork]);
@@ -86,6 +88,9 @@ const ArtworksSidebar = ({ artwork, closeSidebar, refreshArtworks }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // Debugging: Log the form data before submission
+        console.log('Submitting Form Data:', formData);
+
         const url = artwork
             ? `/api/artworks/${artwork._id}`
             : '/api/artworks';
@@ -100,6 +105,10 @@ const ArtworksSidebar = ({ artwork, closeSidebar, refreshArtworks }) => {
         if (response.ok) {
             refreshArtworks();
             closeSidebar();
+        } else {
+            const error = await response.json();
+            console.error('Error Response:', error);
+            alert(error.message || 'Failed to save artwork.');
         }
     };
 
@@ -179,6 +188,17 @@ const ArtworksSidebar = ({ artwork, closeSidebar, refreshArtworks }) => {
                             ))}
                         </div>
                     )}
+                </div>
+                <div className='w-full flex flex-col gap-2'>
+                    <label>Minimum Order Quantity</label>
+                    <input
+                        type='number'
+                        name='minOrderQuantity'
+                        value={formData.minOrderQuantity}
+                        onChange={handleInputChange}
+                        required
+                        className='text-white bg-black border-2 border-green-500 rounded-md py-1 px-2'
+                    />
                 </div>
                 <div className='w-full flex flex-col gap-2'>
                     <label>Price (INR)</label>

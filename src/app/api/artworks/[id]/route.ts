@@ -17,29 +17,52 @@ dbConnect();
  */
 export async function PUT(req: NextRequest, context: Context) {
     try {
-        const { id } = await context.params; // Extract ID from the dynamic route
-        const { name, type, price, description, featured, image } = await req.json();
+        const { id } = await context.params;
+        if (!id) {
+            return NextResponse.json({ message: 'Artwork ID is required.' }, { status: 400 });
+        }
+
+        const body = await req.json();
+
+        // Log the incoming payload for debugging
+        console.log('Incoming Payload:', body);
+
+        const { name, type, price, description, featured, minOrderQuantity } = body;
+
+        // Check if all required fields are present
+        if (!name || !type || !price || !description || minOrderQuantity === undefined) {
+            console.error('Validation Failed: Missing required fields.');
+            return NextResponse.json({ message: 'Missing required fields.' }, { status: 400 });
+        }
 
         await dbConnect();
 
+        // Log before querying the database
+        console.log('Looking for Artwork with ID:', id);
+
         const artwork = await Artwork.findById(id);
         if (!artwork) {
-            return NextResponse.json({ message: 'Artwork not found' }, { status: 404 });
+            console.error('Artwork Not Found:', id);
+            return NextResponse.json({ message: 'Artwork not found.' }, { status: 404 });
         }
 
+        // Update artwork
         artwork.name = name;
         artwork.type = type;
         artwork.price = price;
         artwork.description = description;
         artwork.featured = featured;
-        artwork.image = image;
+        artwork.minOrderQuantity = minOrderQuantity;
+
+        // Log before saving the document
+        console.log('Updating Artwork:', artwork);
 
         await artwork.save();
 
         return NextResponse.json({ message: 'Artwork updated successfully', artwork }, { status: 200 });
     } catch (error) {
-        const errorMessage = (error as Error).message;
-        return NextResponse.json({ message: 'Failed to update artwork', error: errorMessage }, { status: 500 });
+        console.error('Error in PUT /api/artworks/[id]:', error);
+        return NextResponse.json({ message: 'Failed to update artwork.', error: (error as Error).message }, { status: 500 });
     }
 }
 

@@ -12,7 +12,12 @@ const ArtworkModal = ({ artwork, closeModal }) => {
     const [userData, setUserData] = useState({});
     const [selectedAddress, setSelectedAddress] = useState('');
     const [newAddress, setNewAddress] = useState('');
-    const [quantity, setQuantity] = useState(1);
+    const [quantity, setQuantity] = useState(artwork.minOrderQuantity || 1); // Set default quantity
+
+    // Set initial quantity to artwork's minOrderQuantity
+    useEffect(() => {
+        setQuantity(artwork.minOrderQuantity || 1);
+    }, [artwork.minOrderQuantity]);
 
     // Fetch user data and addresses
     useEffect(() => {
@@ -177,9 +182,9 @@ const ArtworkModal = ({ artwork, closeModal }) => {
                         />
                         <input
                             type="number"
-                            min="1"
+                            min={artwork.minOrderQuantity || 1} // Enforce minimum order quantity
                             value={quantity}
-                            onChange={(e) => setQuantity(Number(e.target.value))}
+                            onChange={(e) => setQuantity(Math.max(Number(e.target.value), artwork.minOrderQuantity || 1))}
                             className="w-full p-2 rounded border border-green-500 bg-black text-green-500"
                             placeholder="Enter Quantity"
                         />

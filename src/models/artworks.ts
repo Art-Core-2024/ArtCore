@@ -7,6 +7,7 @@ export interface IArtwork extends Document {
     description: string;
     featured: boolean;
     image: string;
+    minOrderQuantity: number;
 }
 
 const ArtworkSchema: Schema<IArtwork> = new Schema(
@@ -16,7 +17,8 @@ const ArtworkSchema: Schema<IArtwork> = new Schema(
         price: { type: Number, required: true },
         description: { type: String, required: true },
         featured: { type: Boolean, default: false },
-        image: { type: String, required: true }, 
+        image: { type: String, required: true },
+        minOrderQuantity: { type: Number, default: 1, required: true },
     },
     { timestamps: true }
 );

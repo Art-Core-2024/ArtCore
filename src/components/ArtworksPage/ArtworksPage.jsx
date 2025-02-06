@@ -67,7 +67,7 @@ const ArtworksPage = () => {
                 </div>
                 <hr className='border-none h-[1px] bg-white w-full' />
             </div>
-            <div className='w-full h-[22rem] overflow-hidden overflow-y-auto flex gap-6 flex-wrap items-center justify-between px-5 pb-5'>
+            <div className='w-full h-[22rem] overflow-hidden overflow-y-auto flex gap-6 flex-wrap items-center justify-center px-5 pb-5'>
                 {filteredArtworks.map((artwork) => (
                     <Card
                         key={artwork._id}
