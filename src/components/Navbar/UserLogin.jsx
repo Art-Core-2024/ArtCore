@@ -78,7 +78,7 @@ const UserLogin = () => {
       {user ? (
         <>
           <div
-            className="text-white font-semibold cursor-pointer border-2 border-green-500 px-4 py-2 flex items-center justify-center gap-3 rounded-full bg-black shadow-md shadow-green-400 transition duration-200 ease-in-out hover:scale-105 drop-shadow-2xl"
+            className="text-white font-semibold cursor-pointer border-2 border-green-500 px-4 py-2 flex items-center justify-center gap-3 rounded-full bg-black transition duration-200 ease-in-out hover:scale-105 drop-shadow-2xl"
             onClick={toggleDropdown}
           >
             <Image

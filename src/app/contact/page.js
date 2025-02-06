@@ -16,15 +16,15 @@ const Contact = () => {
         priority
         className='fixed top-0 h-screen w-full z-[-2]'
       />
-      <div className='absolute inset-0 bg-[#000000] opacity-70 z-[-1]'></div>
+      <div className='absolute inset-0 bg-[#000000] opacity-20 z-[-1]'></div>
       <motion.div
         initial={{ translateX: -100, opacity: 0 }}
         animate={{ translateX: 0, opacity: 1 }}
         transition={{ delay: 1, duration: 0.35 }}
-        className='z-[1] flex flex-col items-start justify-center italic gap-3 text-white w-full pt-28 px-20 font-carter tracking-wider text-4xl drop-shadow-text'
+        className='z-[1] flex flex-col items-start justify-center italic gap-3 text-black w-full pt-28 px-20 font-carter tracking-wider text-4xl drop-shadow-text'
       >
         CONTACT US
-        <hr className='border-none h-[1px] bg-white w-full' />
+        <hr className='border-none h-[2px] bg-black w-full' />
       </motion.div>
       <div className='w-full h-full px-20 pt-8 flex items-center justify-between gap-10'>
         <ContactForm />

@@ -41,7 +41,7 @@ const Admin = () => {
                 priority
                 className='fixed top-0 h-screen w-full z-[-2]'
             />
-            <div className='absolute inset-0 bg-[#000000] opacity-70 z-[-1]'></div>
+            <div className='absolute inset-0 bg-[#000000] opacity-20 z-[-1]'></div>
             <SidePanel activePanel={activePanel} setActivePanel={setActivePanel} />
             <AdminContent activePanel={activePanel} />
         </div>

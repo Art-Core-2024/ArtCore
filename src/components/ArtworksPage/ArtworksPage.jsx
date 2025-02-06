@@ -60,12 +60,12 @@ const ArtworksPage = () => {
         >
             <div className='w-full pt-[6.4rem] z-20 pb-5'>
                 <div className='flex items-center justify-between w-full'>
-                    <p className='font-carter tracking-wider text-4xl drop-shadow-text'>
+                    <p className='font-carter tracking-wider text-4xl drop-shadow-text text-black'>
                         MY ARTWORKS
                     </p>
                     <ArtworksFilterTabs onTabChange={handleTabChange} />
                 </div>
-                <hr className='border-none h-[1px] bg-white w-full' />
+                <hr className='border-none h-[2px] bg-black w-full' />
             </div>
             <div className='w-full h-[22rem] overflow-hidden overflow-y-auto flex gap-6 flex-wrap items-center justify-center px-5 pb-5'>
                 {filteredArtworks.map((artwork) => (

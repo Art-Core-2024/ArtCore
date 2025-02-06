@@ -18,7 +18,7 @@ const IconLink = ({ href, icon: Icon, label, ariaLabel }) => (
 const ContactSocials = () => {
     return (
         <div className="w-1/3 h-full flex items-start justify-center">
-            <div className="h-[65%] w-full border-2 border-green-500 rounded-md flex flex-col items-center justify-between">
+            <div className="h-[65%] w-full border-2 border-green-500 bg-black rounded-md flex flex-col items-center justify-between">
                 <header className="w-full px-4 py-4 text-center">
                     <p className="font-jim text-white text-2xl font-bold tracking-wider">
                         Let&apos;s connect

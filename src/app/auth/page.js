@@ -26,7 +26,7 @@ const Auth = () => {
         objectPosition="center"
         priority
       />
-      <div className="absolute inset-0 bg-[#000000] opacity-70"></div>
+      <div className="absolute inset-0 bg-[#000000] opacity-20"></div>
       <AuthToggle
         isLogin={isLogin}
         setIsLogin={setIsLogin}

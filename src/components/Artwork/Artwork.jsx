@@ -55,13 +55,13 @@ const Artwork = () => {
     return (
         <>
             <div className="absolute left-5 z-10">
-                <button onClick={scrollLeft} className="text-white">
+                <button onClick={scrollLeft} className="text-black">
                     <ArrowLeftCircleIcon className="w-12 h-12" />
                 </button>
             </div>
 
             <div className="absolute right-5 z-10">
-                <button onClick={scrollRight} className="text-white">
+                <button onClick={scrollRight} className="text-black">
                     <ArrowRightCircleIcon className="w-12 h-12" />
                 </button>
             </div>

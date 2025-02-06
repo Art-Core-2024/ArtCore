@@ -41,12 +41,12 @@ const About = () => {
                         initial={{ translateX: -100, opacity: 0 }}
                         animate={{ translateX: 0, opacity: 1 }}
                         transition={{ delay: 1, duration: 0.35 }}
-                        className='z-[1] flex flex-col items-end justify-center italic gap-3 w-full px-20 font-carter tracking-wider text-5xl drop-shadow-text'
+                        className='z-[1] flex flex-col items-end justify-center italic gap-3 w-full px-20 font-carter tracking-wider text-5xl drop-shadow-text text-black'
                     >
-                        KNOW THE ARTIST
-                        <hr className='border-none h-[1px] bg-white w-[80%]' />
+                        KNOW THE ARTISTS
+                        <hr className='border-none h-[2px] bg-black w-[80%]' />
                     </motion.div>
-                    <div className='w-full flex items-center justify-center pt-9 gap-28'>
+                    <div className='w-full flex items-center justify-center pt-9 gap-28 relative'>
                         <ArtistImage />
                         <ArtistDetails />
                     </div>

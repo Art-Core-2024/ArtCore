@@ -5,12 +5,12 @@ import React from 'react';
 const Card = ({ img, alt, title, type, price, isAdmin, onEdit, onClick }) => {
     return (
         <div
-            className='relative text-white border-2 border-green-400 rounded-md flex items-center justify-center flex-col w-[16rem] h-[24.2rem] pb-2 transition duration-200 ease-in-out cursor-pointer hover:scale-105'
+            className='relative text-white bg-black border-2 border-green-400 rounded-md flex items-center justify-center flex-col w-[16rem] h-[24.2rem] pb-2 transition duration-200 ease-in-out cursor-pointer hover:scale-105'
             onClick={onClick}
         >
             {isAdmin && (
                 <div
-                    className='absolute -top-4 -right-4 p-2 border-2 border-green-500 bg-black rounded-full'
+                    className='absolute -top-4 -right-4 p-2 border-2 border-green-500 rounded-full'
                     onClick={(e) => {
                         e.stopPropagation(); // Prevent modal from opening when edit is clicked
                         onEdit();
