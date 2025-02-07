@@ -56,7 +56,7 @@ const ManageArtworks = () => {
         <div className='w-full h-full overflow-hidden'>
             <div className='flex items-center justify-center flex-col w-full'>
                 <div className='flex items-center justify-between w-full pb-5'>
-                    <p className='text-2xl font-bold'>Manage Artworks</p>
+                    <p className='text-2xl font-bold text-black'>Manage Artworks</p>
                     <button
                         className='bg-black border-2 border-green-500 rounded-full px-3 pr-5 py-1 flex items-center justify-center gap-4'
                         onClick={() => openSidebar()}
@@ -65,7 +65,7 @@ const ManageArtworks = () => {
                         <p className='font-bold text-lg'>Add Artwork</p>
                     </button>
                 </div>
-                <hr className='w-full h-[1px] border-none bg-white mb-5' />
+                <hr className='w-full h-[2px] border-none bg-black mb-5' />
             </div>
             <div className='w-full h-[25.5rem] pb-4 flex gap-6 flex-wrap items-center justify-center pt-7 px-3 overflow-hidden overflow-y-auto'>
                 {artworks.map((artwork) => (

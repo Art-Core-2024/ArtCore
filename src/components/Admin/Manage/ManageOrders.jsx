@@ -63,7 +63,7 @@ const ManageOrders = () => {
       <div className="flex items-center justify-center flex-col w-full">
         <div className="w-full flex items-center justify-between pb-5">
           <div className="flex items-center justify-between w-full">
-            <p className="text-2xl font-bold">Manage Orders</p>
+            <p className="text-2xl font-bold text-black">Manage Orders</p>
           </div>
           <div className="relative flex items-center px-2 pr-4 py-2 rounded-full justify-between gap-2 bg-black border-2 border-green-500">
             <MagnifyingGlassIcon className="size-6 text-green-500" />
@@ -76,7 +76,7 @@ const ManageOrders = () => {
             />
           </div>
         </div>
-        <hr className="w-full h-[1px] border-none bg-white mb-5" />
+        <hr className="w-full h-[2px] border-none bg-black mb-5" />
       </div>
       <div className="w-full h-[25.5rem] pb-4 flex gap-6 flex-col items-center justify-start pt-7 px-3 overflow-hidden overflow-y-auto">
         {loading ? (

@@ -51,7 +51,7 @@ const LeftSection = () => {
     >
       <div className='w-full flex flex-col justify-center items-center gap-6 text-black'>
         <p className='font-carter text-7xl font-bold tracking-wide drop-shadow-text'>ART CORE</p>
-        <p className='font-jim text-4xl font-medium text-center tracking-wide'>&quot;Curating Beauty, one Brushstroke at a Time&quot;</p>
+        <p className='font-jim text-3xl font-medium text-center tracking-wide'>&quot;Your one stop destination for artistic decoratives&quot;</p>
       </div>
       <div className='w-full flex items-center justify-center gap-16'>
         {user ? (
