@@ -28,7 +28,7 @@ const TopMovingArrow = () => {
         isVisible && (
             <ArrowUpCircleIcon 
                 onClick={scrollToTop}
-                className='fixed bottom-5 right-5 size-14 bg-black text-white border-2 border-green-500 shadow-md shadow-green-400 drop-shadow-2xl cursor-pointer transition duration-200 ease-in-out hover:-translate-y-3 rounded-full z-[99]' 
+                className='fixed bottom-24 lg:bottom-5 right-2 lg:right-5 size-14 bg-black text-white border-2 border-green-500 shadow-md shadow-green-400 drop-shadow-2xl cursor-pointer transition duration-200 ease-in-out hover:-translate-y-3 rounded-full z-[99]' 
             />
         )
     );
