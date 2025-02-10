@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { auth } from '@/firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import Image from 'next/image';
 
 const LeftSection = () => {
   const [user, setUser] = useState(null);
@@ -47,13 +48,39 @@ const LeftSection = () => {
       initial={{ translateX: -100, opacity: 0 }}
       animate={{ translateX: 0, opacity: 1 }}
       transition={{ delay: 0.3, duration: 0.35 }}
-      className='w-1/2 h-full flex flex-col justify-center items-center gap-12 pt-20 text-white'
+      className='w-full text-center lg:w-1/2 h-full px-4 lg:px-0 flex flex-col justify-center items-center gap-12 lg:pt-20 text-white'
     >
       <div className='w-full flex flex-col justify-center items-center gap-6 text-black'>
-        <p className='font-carter text-7xl font-bold tracking-wide drop-shadow-text'>ART CORE</p>
-        <p className='font-jim text-3xl font-medium text-center tracking-wide'>&quot;Your one stop destination for artistic decoratives&quot;</p>
+        {/* <Image
+          src='/logo.png'
+          alt='Art Core'
+          width={150}
+          height={150}
+          className='rounded-full size-32'
+        /> */}
+
+        <div className='w-full rounded-full p-4 pt-10 lg:hidden flex items-center justify-center mx-auto my-auto'>
+          <Image
+            src='/Arundhati.jpg'
+            alt='Arundhati Bera'
+            width={1500}
+            height={1500}
+            className='size-40 -ml-32 object-cover absolute z-20 border-3 border-black rounded-full'
+            priority
+          />
+          <Image
+            src='/Anusua.jpg'
+            alt='Anusua Maity'
+            width={1500}
+            height={1500}
+            className='size-40 -mr-32 object-cover absolute z-10 border-3 border-black rounded-full'
+            priority
+          />
+        </div>
+        <p className='font-carter text-5xl lg:text-7xl font-bold tracking-wide drop-shadow-text pt-16 lg:pt-0'>ART CORE</p>
+        <p className='font-jim text-2xl lg:text-3xl font-medium text-center tracking-wide'>&quot;Your one stop destination for artistic decoratives&quot;</p>
       </div>
-      <div className='w-full flex items-center justify-center gap-16'>
+      <div className='w-full flex lg:flex-row flex-col items-center justify-center gap-3 lg:gap-16'>
         {user ? (
           <>
             <div
@@ -63,12 +90,12 @@ const LeftSection = () => {
             </div>
           </>
         ) : (
-          <Link href='/auth' className='flex items-center justify-center gap-3 border-2 border-green-500 bg-black rounded-full px-7 py-3 font-bold transition duration-200 ease-in-out hover:scale-105'>
+          <Link href='/auth' className='w-full lg:w-auto flex items-center justify-center gap-3 border-2 border-green-500 bg-black rounded-full px-7 py-3 font-bold transition duration-200 ease-in-out hover:scale-105'>
             <LockClosedIcon className='h-6 w-6' />
             Login/Signup
           </Link>
         )}
-        <button className='flex items-center justify-center gap-3 border-2 border-green-500 bg-black rounded-full px-7 py-3 font-bold transition duration-200 ease-in-out hover:scale-105'>
+        <button className='w-full lg:w-auto flex items-center justify-center gap-3 border-2 border-green-500 bg-black rounded-full px-7 py-3 font-bold transition duration-200 ease-in-out hover:scale-105'>
           <PaintBrushIcon className='h-6 w-6' />
           Explore Artworks
         </button>

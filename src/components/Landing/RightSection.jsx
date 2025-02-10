@@ -10,7 +10,7 @@ const RightSection = () => {
       initial={{ translateX: 100, opacity: 0 }}
       animate={{ translateX: 0, opacity: 1 }}
       transition={{ delay: 0.3, duration: 0.35 }}
-      className='w-1/2 pt-28 h-full flex items-center justify-center relative text-white overflow-hidden'
+      className='w-full lg:w-1/2 lg:pt-28 h-full hidden lg:flex items-center justify-center relative text-white overflow-hidden'
     >
       <div className='w-full h-full relative rounded-full p-3 flex items-center justify-center mx-auto my-auto overflow-hidden'>
         <Image

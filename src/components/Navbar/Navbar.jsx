@@ -35,10 +35,10 @@ const Navbar = () => {
             initial={{ translateY: -100, opacity: 0 }}
             animate={{ translateY: 0, opacity: 1 }}
             transition={{ duration: 0.35 }}
-            className={`w-full flex items-center justify-between px-10 fixed z-50 transition-colors duration-300 ${scrolled ? 'bg-[#0000009b] top-0 backdrop-blur-md pt-5 pb-2' : 'bg-transparent top-5'}`}
+            className={`w-full flex items-center justify-between px-3 lg:px-10 fixed z-50 transition-colors duration-300 ${scrolled ? 'bg-[#0000009b] top-0 backdrop-blur-md pt-5 pb-2' : 'bg-transparent top-5'}`}
         >
             <NavLogo />
-            <div className='flex items-center justify-between w-3/5'>
+            <div className='flex items-center justify-end lg:justify-between w-3/5'>
                 <NavbarMain />
                 <UserLogin />
             </div>
