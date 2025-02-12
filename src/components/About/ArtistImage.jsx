@@ -9,7 +9,7 @@ const ArtistImage = () => {
       initial={{ translateX: -100, opacity: 0 }}
       animate={{ translateX: 0, opacity: 1 }}
       transition={{ delay: 1.4, duration: 0.35 }}
-      className='flex items-center justify-center relative w-1/3 h-full'
+      className='hidden lg:flex items-center justify-center relative w-1/3 h-full'
     >
       <Image
         src='/Arundhati.jpg'
