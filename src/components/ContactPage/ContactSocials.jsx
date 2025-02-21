@@ -28,10 +28,10 @@ const ContactSocials = () => {
 
                 <div className="w-full flex flex-col items-center gap-5 px-4 pb-5">
                     <IconLink
-                        href="https://www.instagram.com/art_core"
+                        href="https://www.instagram.com/art_core0425"
                         icon={Instagram}
-                        label="art_core"
-                        ariaLabel="Visit Instagram profile art_core"
+                        label="art_core0425"
+                        ariaLabel="Visit Instagram profile art_core0425"
                     />
                     <IconLink
                         href="tel:+916295029851"
