@@ -47,7 +47,7 @@ const Footer = () => {
             <div className='w-full flex justify-between items-center lg:items-start flex-col lg:flex-row pb-8'>
                 <div className='flex items-center gap-4 text-white font-semibold text-2xl font-carter tracking-wider'>
                     <Image
-                        src='/Logo.png'
+                        src='/logo.png'
                         alt='Logo'
                         width={100}
                         height={100}
