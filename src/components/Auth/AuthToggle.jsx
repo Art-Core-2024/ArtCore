@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 const AuthToggle = ({ isLogin, setIsLogin, setLogin, setSignup }) => {
 
   return (
-    <div className='bg-[#0000008f] backdrop-blur-md border-2 border-green-500 h-[72%] w-80 mt-24 rounded-md p-5 flex flex-col items-center justify-between z-10 shadow-md drop-shadow-2xl shadow-green-400'>
+    <div className='bg-[#0000008f] backdrop-blur-md border-2 border-green-500 w-full lg:h-[77%] lg:w-80 mt-24 lg:mt-32 rounded-md p-5 flex flex-col items-center justify-between z-10 shadow-md drop-shadow-2xl shadow-green-400'>
       <div className='w-full flex flex-col items-center justify-center gap-2'>
         <Image
           src="/logo.png"

@@ -65,10 +65,10 @@ const ContactForm = () => {
     };
 
     return (
-        <div className='w-2/3 h-full flex items-start justify-between'>
+        <div className='w-full h-[28rem] lg:w-2/3 lg:h-full flex items-start justify-between'>
             <Toaster position="top-right" reverseOrder={false} />
             <form
-                className='h-[65%] w-full p-4 bg-black text-white border-2 border-green-500 rounded-md flex items-center justify-between flex-col'
+                className='h-full lg:h-[78%] w-full p-4 bg-black text-white border-2 border-green-500 rounded-md flex items-center justify-between flex-col'
                 onSubmit={handleSubmit}
             >
                 <div className='w-full h-full flex flex-col items-start justify-between gap-4 overflow-hidden overflow-y-auto px-3 pb-4'>

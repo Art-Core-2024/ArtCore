@@ -51,6 +51,10 @@ export async function PUT(req: NextRequest) {
         if (!updatedUser) {
             return NextResponse.json({ message: 'User not found' }, { status: 404 });
         }
+
+        // Return a response after updating the user
+        return NextResponse.json({ message: 'User updated successfully', user: updatedUser }, { status: 200 });
+
     } catch (error: unknown) {
         if (error instanceof Error) {
             return NextResponse.json({ message: 'Failed to update user', error: error.message }, { status: 500 });
@@ -71,6 +75,15 @@ export async function DELETE(req: NextRequest) {
     }
 
     try {
+        const deletedUser = await User.findByIdAndDelete(id);
+
+        if (!deletedUser) {
+            return NextResponse.json({ message: 'User not found' }, { status: 404 });
+        }
+
+        // ✅ Return a response after deleting the user
+        return NextResponse.json({ message: 'User deleted successfully' }, { status: 200 });
+
     } catch (error: unknown) {
         if (error instanceof Error) {
             return NextResponse.json({ message: 'Failed to delete user', error: error.message }, { status: 500 });

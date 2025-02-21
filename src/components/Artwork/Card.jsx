@@ -5,7 +5,7 @@ import React from 'react';
 const Card = ({ img, alt, title, type, price, isAdmin, onEdit, onClick }) => {
     return (
         <div
-            className='relative text-white bg-black border-2 border-green-400 rounded-md flex items-center justify-center flex-col w-[16rem] h-[24.2rem] pb-2 transition duration-200 ease-in-out cursor-pointer hover:scale-105'
+            className='relative text-white bg-black border-2 border-green-400 rounded-md flex items-center justify-center flex-col w-[14rem] h-[20rem] lg:w-[16rem] lg:h-[24.2rem] pb-2 transition duration-200 ease-in-out cursor-pointer hover:scale-105'
             onClick={onClick}
         >
             {isAdmin && (
@@ -39,8 +39,8 @@ const Card = ({ img, alt, title, type, price, isAdmin, onEdit, onClick }) => {
                         <div>{price}</div>
                     </div>
                 </div>
-                <button className='flex items-center justify-center gap-3 border-2 border-green-500 bg-black rounded-md py-2 font-bold transition duration-300 ease-in-out hover:bg-green-900'>
-                    <CurrencyRupeeIcon className='w-6 h-6' />
+                <button className='text-[0.7rem] lg:text-base flex items-center justify-center gap-3 border-2 border-green-500 bg-black rounded-md py-2 font-bold transition duration-300 ease-in-out hover:bg-green-900'>
+                    <CurrencyRupeeIcon className='size-5 lg:w-6 lg:h-6' />
                     Buy Now
                 </button>
             </div>

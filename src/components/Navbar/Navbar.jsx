@@ -38,7 +38,7 @@ const Navbar = () => {
             className={`w-full flex items-center justify-between px-3 lg:px-10 fixed z-50 transition-colors duration-300 ${scrolled ? 'bg-[#0000009b] top-0 backdrop-blur-md pt-5 pb-2' : 'bg-transparent top-5'}`}
         >
             <NavLogo />
-            <div className='flex items-center justify-end lg:justify-between w-3/5'>
+            <div className='flex items-center justify-end lg:justify-between lg:w-3/5'>
                 <NavbarMain />
                 <UserLogin />
             </div>

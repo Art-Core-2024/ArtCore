@@ -134,30 +134,37 @@ const ArtworkModal = ({ artwork, closeModal }) => {
             <ToastContainer />
             <div
                 ref={ref}
-                className="relative transition ease-in-out duration-200 bg-black text-white border-2 border-green-500 shadow-md drop-shadow-3xl shadow-green-400 rounded-lg h-[25rem] w-[60%] mt-20 flex items-center justify-center"
+                className="relative transition overflow-hidden ease-in-out duration-200 bg-black text-white border-2 border-green-500 shadow-md drop-shadow-3xl shadow-green-400 rounded-lg h-[30rem] w-full lg:h-[27rem] lg:w-[60%] lg:mt-10 flex items-center justify-center"
             >
                 <XMarkIcon
                     className="absolute top-4 right-4 w-8 h-8 cursor-pointer text-green-500 font-bold transition ease-in-out duration-200 hover:scale-110"
                     onClick={closeModal}
                 />
-                <div className="w-full h-full p-5">
+                <div className="w-full h-full p-5 hidden lg:flex items-center justify-between flex-col">
                     <Image
                         src={artwork.image}
                         alt={artwork.name}
                         width={2000}
                         height={2000}
-                        className="w-full h-full object-cover rounded-md"
+                        className="w-full h-full pb-2 object-cover rounded-md"
                     />
-                </div>
-                <div className="w-full h-full p-5 pt-10 flex items-center flex-col justify-between">
-                    <div className="w-full h-full">
-                        <h2 className="text-2xl font-extrabold mb-4 text-green-500">{artwork.name}</h2>
-                        <div className="flex items-center justify-between pr-10 font-bold text-gray-500">
+                    <div className="w-full flex items-start justify-center flex-col">
+                        <h2 className="text-2xl flex font-extrabold text-green-500">{artwork.name}</h2>
+                        <div className="flex items-center justify-between w-full pr-10 font-bold text-gray-500">
                             <p>{artwork.type}</p>
-                            <p>{artwork.price}</p>
+                            <p>&#8377; {artwork.price}</p>
                         </div>
                     </div>
-                    <div className="w-full h-[32rem] mb-5 overflow-hidden overflow-y-auto flex items-start justify-start pr-3">
+                </div>
+                <div className="w-full h-full p-5 pt-12 lg:pt-12 flex items-center flex-col justify-between">
+                    <div className="w-full flex lg:hidden items-start justify-center flex-col">
+                        <h2 className="text-2xl flex font-extrabold text-green-500">{artwork.name}</h2>
+                        <div className="flex items-center justify-between w-full pr-10 font-bold text-gray-500">
+                            <p>{artwork.type}</p>
+                            <p>&#8377; {artwork.price}</p>
+                        </div>
+                    </div>
+                    <div className="w-full h-[28rem] mb-5 overflow-hidden overflow-y-auto flex items-start justify-start pr-3">
                         {artwork.description}
                     </div>
                     <div className="w-full h-full flex flex-col items-center justify-end gap-3">

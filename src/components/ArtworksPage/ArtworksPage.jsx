@@ -56,11 +56,11 @@ const ArtworksPage = () => {
             initial={{ translateX: -100, opacity: 0 }}
             animate={{ translateX: 0, opacity: 1 }}
             transition={{ delay: 1, duration: 0.35 }}
-            className='z-[1] flex flex-col items-start justify-center italic gap-3 w-full px-12'
+            className='z-[1] flex flex-col items-start justify-center italic gap-3 w-full px-3 lg:px-12'
         >
-            <div className='w-full pt-[6.4rem] z-20 pb-5'>
-                <div className='flex items-center justify-between w-full'>
-                    <p className='font-carter tracking-wider text-4xl drop-shadow-text text-black'>
+            <div className='w-full pt-28 lg:pt-28 z-20 pb-5'>
+                <div className='flex flex-col lg:flex-row items-center gap-3 justify-between w-full'>
+                    <p className='font-carter tracking-wider text-2xl lg:text-4xl drop-shadow-text text-black'>
                         MY ARTWORKS
                     </p>
                     <ArtworksFilterTabs onTabChange={handleTabChange} />

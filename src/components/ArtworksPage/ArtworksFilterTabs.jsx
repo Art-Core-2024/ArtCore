@@ -39,11 +39,11 @@ const ArtworksFilterTabs = ({ onTabChange }) => {
     }, [dropdownOpen, handleClickOutside]);
 
     return (
-        <div className="relative" ref={dropdownRef}>
+        <div className="relative w-full lg:w-auto" ref={dropdownRef}>
             <button
                 type="button"
                 onClick={toggleDropdown}
-                className="flex items-center justify-between gap-16 px-4 py-2 mb-2 border-2 rounded-md border-green-500 bg-black text-white font-medium"
+                className="flex items-center justify-between w-full lg:w-auto gap-16 px-4 py-2 mb-2 border-2 rounded-md border-green-500 bg-black text-white font-medium"
             >
                 <span>{selectedTab}</span>
                 <ChevronDownIcon

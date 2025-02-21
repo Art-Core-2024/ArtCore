@@ -4,7 +4,7 @@ import ArtworksPage from '@/components/ArtworksPage/ArtworksPage';
 
 const Artworks = () => {
   return (
-    <div className='w-full min-h-screen relative text-white'>
+    <div className='w-full pb-20 lg:min-h-screen relative text-white'>
       <Image
         src="/Bg-screen.jpg"
         alt="Background image"

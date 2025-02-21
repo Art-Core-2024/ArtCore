@@ -34,7 +34,7 @@ const About = () => {
     }, []);
 
     return (
-        <div ref={aboutRef} className='w-full h-screen relative text-white overflow-hidden  lg:pt-32'>
+        <div ref={aboutRef} className='w-full pb-44 lg:h-screen relative text-white overflow-hidden lg:pt-32'>
             {isVisible && (
                 <>
                     <motion.div

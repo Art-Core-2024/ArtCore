@@ -109,7 +109,7 @@ const Profile = () => {
     };
 
     return (
-        <div className="w-full h-screen relative overflow-hidden">
+        <div className="w-full min-h-screen lg:h-screen relative overflow-hidden pb-20 lg:p-0">
             <ToastContainer />
             <Image
                 src="/Bg-screen.jpg"
@@ -117,15 +117,15 @@ const Profile = () => {
                 width={1000}
                 height={1000}
                 priority
-                className="fixed top-0 h-screen w-full z-[-2]"
+                className="fixed inset-0 top-0 h-screen w-full z-[-2]"
             />
             <div className="absolute inset-0 bg-[#000000] opacity-20 z-[-1]"></div>
             {loading ? (
                 <div className="text-white text-center mt-10">Loading...</div>
             ) : (
-                <div className="w-full h-[95%] px-12 pt-28 gap-12 flex items-center justify-between">
+                <div className="w-full h-full lg:h-[95%] px-3 lg:px-12 pt-28 gap-12 flex flex-col lg:flex-row items-center justify-between">
                     {/* Profile Section */}
-                    <div className="w-1/3 h-[95%] py-5 bg-modal-theme flex items-center flex-col justify-between p-10 gap-8 rounded-md drop-shadow-md shadow-blue-theme shadow-lg bg-black border-2 border-green-500">
+                    <div className="w-full lg:w-1/3 lg:h-[95%] py-5 bg-modal-theme flex items-center flex-col justify-between p-10 gap-8 rounded-md drop-shadow-md shadow-blue-theme shadow-lg bg-black border-2 border-green-500">
                         <div className="flex items-center justify-center flex-col gap-3 w-full">
                             <div className="relative">
                                 <div className="bg-black rounded-full flex items-center justify-center border-2 border-blue-theme">
@@ -160,7 +160,7 @@ const Profile = () => {
                         </div>
                     </div>
                     {/* Editable Section */}
-                    <div className='w-2/3 h-[95%] bg-modal-theme flex flex-col justify-between bg-black border-2 border-green-500 rounded-md drop-shadow-md shadow-blue-theme shadow-lg px-6 py-4'>
+                    <div className='w-full lg:w-2/3 lg:h-[95%] bg-modal-theme flex flex-col justify-between bg-black border-2 border-green-500 rounded-md drop-shadow-md shadow-blue-theme shadow-lg lg:px-6 py-4'>
                         <div className="gap-8 overflow-hidden overflow-y-auto py-5 mb-5">
                             <div className="w-full flex flex-col items-center gap-7 px-5">
                                 <div className="w-full flex flex-col justify-center gap-2">
@@ -221,7 +221,7 @@ const Profile = () => {
                         </div>
                         <button
                             onClick={updateProfile}
-                            className="w-full bg-green-500 border-blue-theme border-[1px] text-black font-semibold py-2 rounded-md transition duration-200 ease-in-out hover:bg-gray-700"
+                            className="w-[90%] mx-auto lg:w-full bg-green-500 border-blue-theme border-[1px] text-black font-semibold py-2 rounded-md transition duration-200 ease-in-out hover:bg-gray-700"
                             disabled={loading}
                         >
                             {loading ? 'Updating...' : 'Update Profile'}

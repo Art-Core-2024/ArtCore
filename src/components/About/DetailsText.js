@@ -1,7 +1,7 @@
 const DetailsText = [
     {
         title: 'Names',
-        description: 'Arundhati Bera & Anusua Maity'
+        description: 'Arundhati Bera'
     },
     {
         title: 'Occupation',

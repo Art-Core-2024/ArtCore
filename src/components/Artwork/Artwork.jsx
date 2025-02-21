@@ -54,19 +54,19 @@ const Artwork = () => {
 
     return (
         <>
-            <div className="absolute left-5 z-10">
+            <div className="absolute top-1/2 left-5 z-10">
                 <button onClick={scrollLeft} className="text-black">
-                    <ArrowLeftCircleIcon className="w-12 h-12" />
+                    <ArrowLeftCircleIcon className="w-10 h-10 lg:w-12 lg:h-12" />
                 </button>
             </div>
 
-            <div className="absolute right-5 z-10">
+            <div className="absolute top-1/2 right-5 z-10">
                 <button onClick={scrollRight} className="text-black">
-                    <ArrowRightCircleIcon className="w-12 h-12" />
+                    <ArrowRightCircleIcon className="w-10 h-10 lg:w-12 lg:h-12" />
                 </button>
             </div>
 
-            <div ref={scrollRef} className='overflow-hidden overflow-x-auto scrollbar-hidden flex items-center justify-start gap-8 py-6 px-6'>
+            <div ref={scrollRef} className='overflow-hidden overflow-x-auto scrollbar-hidden flex items-center justify-start gap-8 py-6 lg:px-6'>
                 {artworks.map((artwork) => (
                     <div key={artwork._id} onClick={() => handleCardClick(artwork)}>
                         <Card

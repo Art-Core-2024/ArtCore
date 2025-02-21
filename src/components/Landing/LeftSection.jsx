@@ -51,40 +51,24 @@ const LeftSection = () => {
       className='w-full text-center lg:w-1/2 h-full px-4 lg:px-0 flex flex-col justify-center items-center gap-12 lg:pt-20 text-white'
     >
       <div className='w-full flex flex-col justify-center items-center gap-6 text-black'>
-        {/* <Image
-          src='/logo.png'
-          alt='Art Core'
-          width={150}
-          height={150}
-          className='rounded-full size-32'
-        /> */}
-
-        <div className='w-full rounded-full p-4 pt-10 lg:hidden flex items-center justify-center mx-auto my-auto'>
+        <div className='w-full rounded-full lg:hidden flex items-center justify-center lg:mx-auto my-auto'>
           <Image
             src='/Arundhati.jpg'
             alt='Arundhati Bera'
             width={1500}
             height={1500}
-            className='size-40 -ml-32 object-cover absolute z-20 border-3 border-black rounded-full'
-            priority
-          />
-          <Image
-            src='/Anusua.jpg'
-            alt='Anusua Maity'
-            width={1500}
-            height={1500}
-            className='size-40 -mr-32 object-cover absolute z-10 border-3 border-black rounded-full'
+            className='size-40 object-cover border-3 border-black rounded-full'
             priority
           />
         </div>
-        <p className='font-carter text-5xl lg:text-7xl font-bold tracking-wide drop-shadow-text pt-16 lg:pt-0'>ART CORE</p>
+        <p className='font-carter text-5xl lg:text-7xl font-bold tracking-wide drop-shadow-text lg:pt-0'>ART CORE</p>
         <p className='font-jim text-2xl lg:text-3xl font-medium text-center tracking-wide'>&quot;Your one stop destination for artistic decoratives&quot;</p>
       </div>
       <div className='w-full flex lg:flex-row flex-col items-center justify-center gap-3 lg:gap-16'>
         {user ? (
           <>
             <div
-              className='text-green-500 font-semibold border-2 border-green-500 px-5 py-2 flex items-center justify-center text-lg gap-3 rounded-full bg-black transition duration-200 ease-in-out'
+              className='text-green-500 w-full lg:w-auto font-semibold border-2 border-green-500 px-5 py-2 flex items-center justify-center text-lg gap-3 rounded-full bg-black transition duration-200 ease-in-out'
             >
               <span className='text-white'>Welcome,</span> {user.name}
             </div>
