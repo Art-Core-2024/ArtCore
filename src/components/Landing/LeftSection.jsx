@@ -79,10 +79,10 @@ const LeftSection = () => {
             Login/Signup
           </Link>
         )}
-        <button className='w-full lg:w-auto flex items-center justify-center gap-3 border-2 border-green-500 bg-black rounded-full px-7 py-3 font-bold transition duration-200 ease-in-out hover:scale-105'>
+        <Link href='/artworks' className='w-full lg:w-auto flex items-center justify-center gap-3 border-2 border-green-500 bg-black rounded-full px-7 py-3 font-bold transition duration-200 ease-in-out hover:scale-105'>
           <PaintBrushIcon className='h-6 w-6' />
           Explore Artworks
-        </button>
+        </Link>
       </div>
     </motion.div>
   )
