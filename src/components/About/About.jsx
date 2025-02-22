@@ -43,7 +43,7 @@ const About = () => {
                         transition={{ delay: 1, duration: 0.35 }}
                         className='z-[1] flex flex-col items-end justify-center italic lg:gap-3 w-full px-3 lg:px-20 font-carter tracking-wider text-2xl lg:text-5xl drop-shadow-text text-black'
                     >
-                        KNOW THE ARTISTS
+                        KNOW THE ARTIST
                         <hr className='border-none h-[2px] bg-black w-full lg:w-[80%]' />
                     </motion.div>
                     <div className='w-full flex items-center justify-center px-3 lg:pl-28 lg:px-16 pt-9 lg:gap-28 relative'>
