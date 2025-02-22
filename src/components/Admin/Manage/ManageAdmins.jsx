@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import AdminsSidebar from '../Sidebars/AdminsSidebar';
-import { PlusCircleIcon } from '@heroicons/react/24/solid';
+import { PlusCircleIcon, XCircleIcon } from '@heroicons/react/24/solid';
 
 const ManageAdmins = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -30,22 +30,22 @@ const ManageAdmins = () => {
   return (
     <div className="w-full h-full overflow-hidden">
       <div className="flex items-center justify-between w-full pb-5">
-        <p className="text-2xl font-bold">Manage Admins</p>
+        <p className="text-2xl font-bold text-black">Manage Admins</p>
         <button
-          className="bg-black border-2 border-green-500 rounded-full px-3 pr-5 py-1 flex items-center gap-4"
+          className="bg-black border-2 border-green-500 rounded-full lg:px-3 lg:pr-5 lg:py-1 flex items-center gap-4"
           onClick={openSidebar}
         >
           <PlusCircleIcon className='size-8 text-green-500' />
-          <p className='font-bold text-lg'>Add Admin</p>
+          <p className='font-bold text-lg lg:flex hidden'>Add Admin</p>
         </button>
       </div>
-      <hr className="w-full h-[1px] border-none bg-white mb-5" />
+      <hr className="w-full h-[2px] border-none bg-black mb-5" />
 
       <div className='w-full h-[26rem] overflow-hidden overflow-y-auto px-3'>
         {/* Pending Invites Section */}
         {pendingInvites.length > 0 && (
           <div className="w-full">
-            <h3 className="text-lg font-bold mb-5">Pending Invites</h3>
+            <h3 className="text-lg font-bold mb-5 text-black">Pending Invites</h3>
             <div className="w-full h-[25.5rem] flex flex-col gap-4 overflow-y-auto">
               {pendingInvites.map((invite) => (
                 <div
@@ -80,7 +80,7 @@ const ManageAdmins = () => {
 
         {/* Active Admins Section */}
         <div className="w-full">
-          <h3 className="text-lg font-bold mb-5">Active Admins</h3>
+          <h3 className="text-lg font-bold mb-5 text-black">Active Admins</h3>
           <div className="w-full h-[25.5rem] flex flex-col gap-4 overflow-y-auto">
             {admins.map((admin) => (
               <div
@@ -101,9 +101,23 @@ const ManageAdmins = () => {
                       console.error('Failed to delete admin:', error);
                     }
                   }}
-                  className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-700"
+                  className="lg:flex hidden bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-700"
                 >
                   Delete Admin
+                </button>
+                <button
+                  onClick={async () => {
+                    // Delete admin logic
+                    try {
+                      await fetch(`/api/admins/${admin._id}`, { method: 'DELETE' });
+                      fetchAdminsAndInvites(); // Refresh data
+                    } catch (error) {
+                      console.error('Failed to delete admin:', error);
+                    }
+                  }}
+                  className="flex lg:hidden border-2 border-red-700 text-white rounded-full hover:bg-red-700"
+                >
+                  <XCircleIcon className='size-6 text-red-700' />
                 </button>
               </div>
             ))}

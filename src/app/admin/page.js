@@ -32,7 +32,7 @@ const Admin = () => {
     }, [router]);
 
     return (
-        <div className='h-screen w-full text-white flex items-center justify-between'>
+        <div className='lg:h-screen w-full text-white flex items-center justify-between'>
             <Image
                 src="/Bg-screen.jpg"
                 alt="Background image"

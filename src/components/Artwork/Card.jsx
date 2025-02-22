@@ -10,7 +10,7 @@ const Card = ({ img, alt, title, type, price, isAdmin, onEdit, onClick }) => {
         >
             {isAdmin && (
                 <div
-                    className='absolute -top-4 -right-4 p-2 border-2 border-green-500 rounded-full'
+                    className='absolute -top-4 -right-4 p-2 border-2 bg-black border-green-500 rounded-full'
                     onClick={(e) => {
                         e.stopPropagation(); // Prevent modal from opening when edit is clicked
                         onEdit();

@@ -36,7 +36,7 @@ const AdminsSidebar = ({ closeSidebar, refreshAdmins }) => {
             initial={{ translateX: '100%' }}
             animate={{ translateX: '0%' }}
             exit={{ translateX: '100%' }}
-            className="fixed top-0 right-0 w-1/3 h-full border-l-2 border-green-500 bg-black p-5 shadow-lg z-50 overflow-hidden"
+            className="fixed top-0 right-0 bottom-0 w-1/3 h-full border-l-2 border-green-500 bg-black p-5 shadow-lg z-50 overflow-hidden"
         >
             <h2 className="text-2xl font-bold mb-4">Add Admin</h2>
             <div className="flex flex-col gap-4">

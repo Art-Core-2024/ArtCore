@@ -22,7 +22,7 @@ const AdminContent = ({ activePanel }) => {
     };
 
     return (
-        <div className='p-10 pb-3 h-full w-full'>
+        <div className='px-3 pt-20 lg:p-10 pb-3 h-full w-full'>
             {renderContent()}
         </div>
     );

@@ -61,11 +61,11 @@ const ManageOrders = () => {
     <div className="w-full h-full overflow-hidden">
       <ToastContainer />
       <div className="flex items-center justify-center flex-col w-full">
-        <div className="w-full flex items-center justify-between pb-5">
+        <div className="w-full flex items-center justify-center lg:justify-between lg:flex-row flex-col pb-5 gap-2 lg:gap-0">
           <div className="flex items-center justify-between w-full">
-            <p className="text-2xl font-bold text-black">Manage Orders</p>
+            <p className="text-2xl font-bold text-black lg:text-left text-center w-full">Manage Orders</p>
           </div>
-          <div className="relative flex items-center px-2 pr-4 py-2 rounded-full justify-between gap-2 bg-black border-2 border-green-500">
+          <div className="w-full lg:w-auto relative flex items-center px-2 lg:pr-4 py-2 rounded-full lg:gap-2 bg-black border-2 border-green-500">
             <MagnifyingGlassIcon className="size-6 text-green-500" />
             <input
               type="text"
@@ -87,7 +87,7 @@ const ManageOrders = () => {
           filteredOrders.map((order) => (
             <div
               key={order._id}
-              className="w-full bg-black border-2 border-green-500 rounded-md flex items-center justify-between px-4 py-2"
+              className="w-full bg-black border-2 border-green-500 rounded-md flex items-center justify-between px-2 lg:px-4 py-2"
             >
               <div className="flex items-start justify-center flex-col gap-2">
                 <div className="text-2xl font-bold">

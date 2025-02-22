@@ -41,11 +41,11 @@ const ViewUsers = () => {
   return (
     <div className='w-full h-full overflow-hidden'>
       <div className='flex items-center justify-center flex-col w-full'>
-        <div className='w-full flex items-center justify-between pb-5'>
+        <div className="w-full flex items-center justify-center lg:justify-between lg:flex-row flex-col pb-5 gap-2 lg:gap-0">
           <div className='flex items-center justify-between w-full'>
-            <p className='text-2xl font-bold'>View Users</p>
+            <p className='text-2xl font-bold text-black w-full lg:text-left text-center'>View Users</p>
           </div>
-          <div className='relative flex items-center px-2 pr-4 py-2 rounded-full justify-between gap-2 bg-black border-2 border-green-500'>
+          <div className="w-full lg:w-auto relative flex items-center px-2 lg:pr-4 py-2 rounded-full lg:gap-2 bg-black border-2 border-green-500">
             <MagnifyingGlassIcon className='size-6 text-green-500' />
             <input
               type="text"
@@ -58,7 +58,7 @@ const ViewUsers = () => {
         </div>
         <hr className='w-full h-[1px] border-none bg-white mb-5' />
       </div>
-      <div className='w-full h-[25.5rem] pb-4 flex gap-6 flex-col items-center justify-start pt-7 px-3 overflow-hidden overflow-y-auto'>
+      <div className='w-full h-[25.5rem] pb-4 flex gap-6 flex-col items-center justify-start pt-7 lg:px-3 overflow-hidden overflow-y-auto'>
         {loading ? (
           <div>Loading...</div>
         ) : error ? (
@@ -67,15 +67,15 @@ const ViewUsers = () => {
           filteredUsers.map((user) => (
             <div
               key={user._id}
-              className='w-full bg-black border-2 border-green-500 rounded-md flex items-center justify-between px-4 py-2'
+              className='w-full bg-black border-2 border-green-500 rounded-md flex items-center justify-between px-2 lg:px-4 py-2'
             >
-              <div className='flex items-start justify-center flex-col gap-2'>
-                <div className='text-2xl font-bold'>{user.name}</div>
-                <div className='text-base font-normal italic'>{user.email}</div>
+              <div className='flex items-start justify-between flex-col gap-2'>
+                <div className='text-lg lg:text-2xl font-bold'>{user.name}</div>
+                <div className='text-sm lg:text-base font-normal italic'>{user.email}</div>
               </div>
-              <div className='flex items-center justify-center flex-col gap-2'>
-                <div className='text-base font-semibold'>{user.username}</div>
-                <div className='text-base font-semibold'>{user.phoneNumber}</div>
+              <div className='flex items-center justify-between flex-col gap-2'>
+                <div className='text-sm lg:text-base font-semibold'>{user.username}</div>
+                <div className='text-sm lg:text-base font-semibold'>{user.phoneNumber}</div>
               </div>
             </div>
           ))

@@ -55,14 +55,14 @@ const ManageArtworks = () => {
     return (
         <div className='w-full h-full overflow-hidden'>
             <div className='flex items-center justify-center flex-col w-full'>
-                <div className='flex items-center justify-between w-full pb-5'>
+                <div className='flex items-center justify-between w-full pb-2 lg:pb-5'>
                     <p className='text-2xl font-bold text-black'>Manage Artworks</p>
                     <button
-                        className='bg-black border-2 border-green-500 rounded-full px-3 pr-5 py-1 flex items-center justify-center gap-4'
+                        className='bg-black border-2 border-green-500 rounded-full lg:px-3 lg:pr-5 lg:py-1 flex items-center justify-center gap-4'
                         onClick={() => openSidebar()}
                     >
                         <PlusCircleIcon className='size-8 text-green-500' />
-                        <p className='font-bold text-lg'>Add Artwork</p>
+                        <p className='font-bold text-lg lg:flex hidden'>Add Artwork</p>
                     </button>
                 </div>
                 <hr className='w-full h-[2px] border-none bg-black mb-5' />

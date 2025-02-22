@@ -117,7 +117,7 @@ const ArtworksSidebar = ({ artwork, closeSidebar, refreshArtworks }) => {
             initial={{ translateX: '100%' }}
             animate={{ translateX: '0%' }}
             exit={{ translateX: '100%' }}
-            className='fixed top-0 right-0 w-1/3 h-full border-l-2 border-green-500 bg-black p-5 shadow-lg z-50 overflow-hidden overflow-y-auto'
+            className='fixed top-0 right-0 lg:w-1/3 h-full border-l-2 border-green-500 bg-black p-5 shadow-lg z-50 overflow-hidden overflow-y-auto'
         >
             <div className='w-full flex items-center justify-center flex-col mb-5'>
                 <h2 className='text-2xl font-bold'>
