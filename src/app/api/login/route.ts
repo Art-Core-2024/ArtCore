@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dbConnect from '@/lib/dbConnect';
 import User from '@/models/user';
-import Admin from '@/models/admin';
+// import Admin from '@/models/admin';
 
 export async function POST(req: NextRequest) {
     try {
@@ -11,14 +11,14 @@ export async function POST(req: NextRequest) {
 
         await dbConnect();
 
-        if (role === 'super-admin') {
+        if (role === 'admin') {
             // Validate super-admin credentials from .env
             if (
                 email === process.env.NEXT_PUBLIC_SUPER_ADMIN_EMAIL &&
                 password === process.env.NEXT_PUBLIC_SUPER_ADMIN_PASSWORD
             ) {
                 const token = jwt.sign(
-                    { email, role: 'super-admin' },
+                    { email, role: 'admin' },
                     process.env.JWT_SECRET as string,
                     { expiresIn: '1h' }
                 );
@@ -26,56 +26,56 @@ export async function POST(req: NextRequest) {
                 return NextResponse.json(
                     {
                         message: 'Login successful',
-                        user: { email, role: 'super-admin' },
+                        user: { email, role: 'admin' },
                         token,
                     },
                     { status: 200 }
                 );
             } else {
                 return NextResponse.json(
-                    { message: 'Invalid super-admin credentials' },
+                    { message: 'Invalid admin credentials' },
                     { status: 401 }
                 );
             }
         }
 
-        if (role === 'admin') {
-            // Admin login logic
-            const admin = await Admin.findOne({ email });
-            if (!admin) {
-                return NextResponse.json(
-                    { message: 'Admin not found' },
-                    { status: 401 }
-                );
-            }
+        // if (role === 'admin') {
+        //     // Admin login logic
+        //     const admin = await Admin.findOne({ email });
+        //     if (!admin) {
+        //         return NextResponse.json(
+        //             { message: 'Admin not found' },
+        //             { status: 401 }
+        //         );
+        //     }
 
-            const isPasswordValid = await bcrypt.compare(password, admin.password);
-            if (!isPasswordValid) {
-                return NextResponse.json(
-                    { message: 'Invalid password' },
-                    { status: 401 }
-                );
-            }
+        //     const isPasswordValid = await bcrypt.compare(password, admin.password);
+        //     if (!isPasswordValid) {
+        //         return NextResponse.json(
+        //             { message: 'Invalid password' },
+        //             { status: 401 }
+        //         );
+        //     }
 
-            const token = jwt.sign(
-                { email: admin.email, role: 'admin' },
-                process.env.JWT_SECRET as string,
-                { expiresIn: '1h' }
-            );
+        //     const token = jwt.sign(
+        //         { email: admin.email, role: 'admin' },
+        //         process.env.JWT_SECRET as string,
+        //         { expiresIn: '1h' }
+        //     );
 
-            return NextResponse.json(
-                {
-                    message: 'Login successful',
-                    user: {
-                        name: admin.name,
-                        email: admin.email,
-                        role: 'admin',
-                    },
-                    token,
-                },
-                { status: 200 }
-            );
-        }
+        //     return NextResponse.json(
+        //         {
+        //             message: 'Login successful',
+        //             user: {
+        //                 name: admin.name,
+        //                 email: admin.email,
+        //                 role: 'admin',
+        //             },
+        //             token,
+        //         },
+        //         { status: 200 }
+        //     );
+        // }
 
         // Keep user login logic as it was
         const user = await User.findOne({ email, role });
