@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 
 const ArtworksFilterTabs = ({ onTabChange }) => {
-    const tabs = ['ALL', 'LIPPAN ART', 'WALL HANGING', 'CANVAS', 'BOOKMARKS', 'DIGITAL'];
+    const tabs = ['ALL', 'CANVAS', 'TOTE BAGS', 'BOOKMARKS', 'CLAY CRAFT', 'LIPPAN ART', 'WALL HANGING', 'DIGITAL'];
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [selectedTab, setSelectedTab] = useState('ALL');
     const dropdownRef = useRef(null);

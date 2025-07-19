@@ -4,7 +4,7 @@ import Image from 'next/image'
 const NavLogo = () => {
     return (
         <Image
-            src="/logo.png"
+            src="/logo.jpg"
             alt="Logo"
             width={500}
             height={500}

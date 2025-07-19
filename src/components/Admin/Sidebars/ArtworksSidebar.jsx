@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 
 const ArtworksSidebar = ({ artwork, closeSidebar, refreshArtworks }) => {
-    const types = ['Lippan Art', 'Wall Hanging', 'Canvas', 'Bookmarks', 'Digital'];
+    const types = ['Lippan Art', 'Wall Hanging', 'Canvas', 'Bookmarks', 'Digital', 'Tote Bags', 'Clay Craft'];
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [formData, setFormData] = useState({
         image: '',
