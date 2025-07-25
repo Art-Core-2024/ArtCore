@@ -13,7 +13,7 @@ export interface IArtwork extends Document {
 const ArtworkSchema: Schema<IArtwork> = new Schema(
     {
         name: { type: String, required: true },
-        type: { type: String, required: true, enum: ['Lippan Art', 'Wall Hanging', 'Canvas', 'Bookmarks', 'Digital'] },
+        type: { type: String, required: true, enum: ['Lippan Art', 'Wall Hanging', 'Canvas', 'Bookmarks', 'Digital', 'Tote Bags', 'Clay Craft'] },
         price: { type: Number, required: true },
         description: { type: String, required: true },
         featured: { type: Boolean, default: false },
